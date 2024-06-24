@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+const githubUsername = 'IL-vin9220';
+const githubRepo = 'KSCT_db';
+const accessToken = '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'; // Cần token quyền truy cập để sửa đổi
+const directoryFile = "data/data.json";
+
+// mã hóa dữ liệu trước khi gửi
+function customBtoa(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+}
+
+// giải mã dữ liệu             
+function customAtob(str) {
+    // Giải mã chuỗi base64 bằng hàm atob()
+    let decoded = atob(str);
+    // Giải mã chuỗi UTF-8
+    decoded = decodeURIComponent(escape(decoded));
+    return decoded;
+}
+
+// Function to add new record
+async function addRecord(data) {
+    let filePath = directoryFile;
+    // let data={"name":"test1", "more-infor":"Test send data"};
+
+    try{
+        const response = await fetch(`https://api.github.com/repos/${githubUsername}/${githubRepo}/contents/${filePath}`,{
+            method: "GET",
+            headers:{
+                Authorization: `token ${accessToken}`
+            }
+        });
+
+        if(response.ok){
+            let content = await response.json();
+            let gl_shaFile = content.sha;
+            
+            const updateResponse = await fetch(`https://api.github.com/repos/${githubUsername}/${githubRepo}/contents/${filePath}`, {
+                method: 'PUT',
+                headers: {
+                    Authorization: `token ${accessToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: "add new record",
+                    content: customBtoa(JSON.stringify(data)),
+                    sha: gl_shaFile
+                })
+            });
+
+            if (updateResponse.ok) {
+                console.log('Data saved successfully!');
+            } else {
+                alert("Thêm thất bại");
+                console.error('Failed to update data on GitHub.');
+            }
+        }
+        else{
+            console.log("get data fail!");
+        }
+    }catch(error){
+        console.error(error);
+    }
+}
+</script>
+</html>
