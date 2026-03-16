@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseFlow - Personal Expense Management</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-icon lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+                    </div>
+                    <span>ExpenseFlow</span>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#" class="nav-item active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard size-5" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-right size-5" aria-hidden="true"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tags size-5" aria-hidden="true"><path d="M13.172 2a2 2 0 0 1 1.414.586l6.71 6.71a2.4 2.4 0 0 1 0 3.408l-4.592 4.592a2.4 2.4 0 0 1-3.408 0l-6.71-6.71A2 2 0 0 1 6 9.172V3a1 1 0 0 1 1-1z"></path><path d="M2 7v6.172a2 2 0 0 0 .586 1.414l6.71 6.71a2.4 2.4 0 0 0 3.191.193"></path><circle cx="10.5" cy="6.5" r=".5" fill="currentColor"></circle></svg>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column size-5" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
+                        <span>Budgets</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings size-5" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="budget-progress">
+                <h3>Monthly Budget</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 68%"></div>
+                </div>
+                <p class="progress-text">$1,360 / $2,000</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Dashboard</h1>
+                    <p class="subtitle">Welcome back, Sarah</p>
+                </div>
+                <div class="topbar-right">
+                    <div class="date-range">
+                        <input type="date" id="startDate" value="2024-01-01">
+                        <span>to</span>
+                        <input type="date" id="endDate" value="2024-06-30">
+                    </div>
+                    <div class="user-avatar">
+                        <!-- <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="User"> -->
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="main-content">
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total Income</h3>
+                            <svg class="icon income" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="card-value">$8,450.00</div>
+                        <div class="card-trend positive">+12.5% from last month</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total Expenses</h3>
+                            <svg class="icon expense" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="5 12 12 5 19 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="card-value">$3,240.50</div>
+                        <div class="card-trend negative">+8.2% from last month</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Balance</h3>
+                            <svg class="icon balance" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                                <path d="M12 6v12"></path>
+                                <path d="M8 10h8"></path>
+                            </svg>
+                        </div>
+                        <div class="card-value">$5,209.50</div>
+                        <div class="card-trend positive">+4.1% from last month</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Savings Goal</h3>
+                            <svg class="icon savings" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.04 3 5.5m0 0a7 7 0 0 1 10 0"></path>
+                            </svg>
+                        </div>
+                        <div class="card-value">68%</div>
+                        <div class="card-trend positive">$3,400 saved this month</div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <div class="card-title">Income vs Expenses</div>
+                        <div class="chart-container">
+                            <canvas id="incomeExpenseChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="card-title">Expense Breakdown</div>
+                        <div class="chart-container">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="transactions-card">
+                    <div class="card-title">Recent Transactions</div>
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="income-row">
+                                <td>
+                                    <div class="transaction-item">
+                                        <div class="transaction-icon salary">💰</div>
+                                        <div class="transaction-details">
+                                            <div class="transaction-name">Salary Deposit</div>
+                                            <div class="transaction-meta">Monthly salary</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge category-income">Income</span></td>
+                                <td>June 28, 2024</td>
+                                <td class="amount income">+$5,000.00</td>
+                                <td><span class="badge status-success">Completed</span></td>
+                            </tr>
+                            <tr class="expense-row">
+                                <td>
+                                    <div class="transaction-item">
+                                        <div class="transaction-icon grocery">🛒</div>
+                                        <div class="transaction-details">
+                                            <div class="transaction-name">Whole Foods Market</div>
+                                            <div class="transaction-meta">Weekly groceries</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge category-expense">Groceries</span></td>
+                                <td>June 26, 2024</td>
+                                <td class="amount expense">-$156.32</td>
+                                <td><span class="badge status-success">Completed</span></td>
+                            </tr>
+                            <tr class="expense-row">
+                                <td>
+                                    <div class="transaction-item">
+                                        <div class="transaction-icon utility">⚡</div>
+                                        <div class="transaction-details">
+                                            <div class="transaction-name">Electric Bill</div>
+                                            <div class="transaction-meta">Monthly utilities</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge category-utilities">Utilities</span></td>
+                                <td>June 25, 2024</td>
+                                <td class="amount expense">-$145.00</td>
+                                <td><span class="badge status-success">Completed</span></td>
+                            </tr>
+                            <tr class="expense-row">
+                                <td>
+                                    <div class="transaction-item">
+                                        <div class="transaction-icon dining">🍽️</div>
+                                        <div class="transaction-details">
+                                            <div class="transaction-name">Restaurant - The Italian Place</div>
+                                            <div class="transaction-meta">Dinner with friends</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge category-dining">Dining</span></td>
+                                <td>June 24, 2024</td>
+                                <td class="amount expense">-$87.45</td>
+                                <td><span class="badge status-success">Completed</span></td>
+                            </tr>
+                            <tr class="income-row">
+                                <td>
+                                    <div class="transaction-item">
+                                        <div class="transaction-icon freelance">💻</div>
+                                        <div class="transaction-details">
+                                            <div class="transaction-name">Freelance Project</div>
+                                            <div class="transaction-meta">Client payment</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge category-income">Income</span></td>
+                                <td>June 23, 2024</td>
+                                <td class="amount income">+$1,200.00</td>
+                                <td><span class="badge status-success">Completed</span></td>
+                            </tr>
+                            <tr class="expense-row">
+                                <td>
+                                    <div class="transaction-item">
+                                        <div class="transaction-icon subscriptions">🎬</div>
+                                        <div class="transaction-details">
+                                            <div class="transaction-name">Netflix Subscription</div>
+                                            <div class="transaction-meta">Monthly subscription</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge category-subscriptions">Subscriptions</span></td>
+                                <td>June 20, 2024</td>
+                                <td class="amount expense">-$15.99</td>
+                                <td><span class="badge status-success">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

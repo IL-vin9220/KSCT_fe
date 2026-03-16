@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiểm Soát Chi Tiêu</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f5f7fb;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:10px;
+width:360px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.title{
+text-align:center;
+margin-bottom:25px;
+font-size:22px;
+color:#4f46e5;
+}
+
+.form-group{
+margin-bottom:15px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-size:14px;
+}
+
+input{
+width:100%;
+padding:10px;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#4f46e5;
+color:white;
+font-size:15px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+.forgot{
+text-align:right;
+font-size:13px;
+margin-top:6px;
+}
+
+.forgot a{
+text-decoration:none;
+color:#4f46e5;
+}
+
+.divider{
+text-align:center;
+margin:20px 0;
+font-size:13px;
+color:#888;
+}
+
+.social-btn{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ddd;
+margin-top:10px;
+cursor:pointer;
+background:white;
+}
+
+.social-btn:hover{
+background:#f3f3f3;
+}
+
+.link{
+text-align:center;
+margin-top:15px;
+font-size:14px;
+}
+
+.link a{
+color:#4f46e5;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="title">
+Đăng nhập
+</div>
+
+<div class="form-group">
+<label>Tài khoản</label>
+<input type="text" id="username">
+</div>
+
+<div class="form-group">
+<label>Mật khẩu</label>
+<input type="password" id="password">
+</div>
+
+<div class="forgot">
+<a href="#">Quên mật khẩu?</a>
+</div>
+
+<button onclick="login()">
+Đăng nhập
+</button>
+
+<!-- <div class="divider">
+Hoặc đăng nhập bằng
+</div>
+
+<div class="other login" style="display: flex; align-items: center; width: 100%; justify-content: center;">
+<svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#1877F2" style="cursor: pointer;" onclick="loginFacebook()">
+  <title>Facebook icon</title>
+  <path d="M23.998 12c0-6.628-5.372-12-11.999-12S0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 15px; cursor: pointer;" onclick="loginGoogle()" width="50" height="50" viewBox="0 0 32 32" xml:space="preserve"><path d="M8.9 16c0 .6.1 1.2.2 1.8L11 16l-1.8-1.8q-.3.9-.3 1.8" style="fill:none"/><path d="M16 23.1c-3.3 0-6-2.2-6.8-5.2l-6.7 6.7C5.3 29 10.3 32 16 32c3.1 0 6-.9 8.5-2.5l-6.7-6.7q-.9.3-1.8.3" style="fill:#34a853"/><path d="M32 13.8c-.1-.5-.5-.8-1-.8H16c-.6 0-1 .4-1 1v5c0 .6.4 1 1 1h5.3c-.9 1.4-2.2 2.3-3.5 2.8l6.7 6.7C29 26.7 32 21.7 32 16v-.7q.15-.6 0-1.5" style="fill:#4285f4"/><path d="M8.9 16c0-.6.1-1.2.2-1.8L2.5 7.5C.9 10 0 12.9 0 16s.9 6 2.5 8.5l6.7-6.7q-.3-.9-.3-1.8" style="fill:#fbbc05"/><path d="M28.5 6c-1.1-1.4-2.5-2.6-4-3.6C22 .9 19.1 0 16 0 10.3 0 5.3 3 2.5 7.5l6.7 6.7C10 11.2 12.8 9 16 9q.9 0 1.8.3c.9.3 1.7.8 2.6 1.5.3.3.7.3 1.1.1l6.7-3.3c.3-.1.5-.4.5-.7.1-.3 0-.6-.2-.9" style="fill:#ea4335"/></svg>
+</div> -->
+
+<div class="link">
+Chưa có tài khoản?
+<a href="register.html">Đăng ký</a>
+</div>
+
+</div>
+
+<script>
+
+function login(){
+
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+
+let user = JSON.parse(localStorage.getItem("user"));
+
+if(user && username === user.username && password === user.password){
+
+window.location.href="dashboard.html";
+
+}else{
+
+alert("Sai tài khoản hoặc mật khẩu");
+
+}
+
+}
+
+function loginFacebook(){
+alert("Demo đăng nhập bằng Facebook");
+}
+
+function loginGoogle(){
+alert("Demo đăng nhập bằng Google");
+}
+
+</script>
+
+</body>
+</html>

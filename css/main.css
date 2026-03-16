@@ -1,0 +1,75 @@
+@import url('./layout/sidebar.css');
+@import url('./layout/header.css');
+
+@import url('./components/dashboard.css');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-size: 14px;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.sidebar{
+    width: 20%;
+    height: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: var(--sidebar);
+    color: var(--sidebar-foreground);
+}
+
+.content{
+    width: 80%;
+    height: 100%;
+    /* padding: 10px 20px;
+    box-sizing: border-box; */
+    /* background-color: #fff; */
+}
+
+:root{
+    --background: lab(97.0986% -.223041 -.716782);
+    --foreground: lab(4.36941% -.237331 -5.91022);
+    --card: lab(100% 0 0);
+    --card-foreground: lab(4.36941% -.237331 -5.91022);
+    --popover: lab(100% 0 0);
+    --popover-foreground: lab(4.36941% -.237331 -5.91022);
+    --primary: lab(46.3624% 5.18757 -61.7046);
+    --primary-foreground: lab(98.84% .0000298023 -.0000119209);
+    --secondary: lab(94.7483% -1.18858 -5.48697);
+    --secondary-foreground: lab(18.478% -1.10844 -20.8573);
+    --muted: lab(94.7716% -1.09154 -3.57003);
+    --muted-foreground: lab(41.9498% -1.43759 -7.24357);
+    --accent: lab(94.7483% -1.18858 -5.48697);
+    --accent-foreground: lab(18.478% -1.10844 -20.8573);
+    --destructive: lab(48.4493% 77.4328 61.5452);
+    --destructive-foreground: lab(48.4493% 77.4328 61.5452);
+    --border: lab(90.7116% -1.09041 -3.56942);
+    --input: lab(90.7116% -1.09041 -3.56942);
+    --ring: lab(46.3624% 5.18757 -61.7046);
+    --chart-1: lab(46.3624% 5.18757 -61.7046);
+    --chart-2: lab(61.9416% -65.2725 33.8992);
+    --chart-3: lab(63.9147% 48.8658 61.0566);
+    --chart-4: lab(56.6285% 44.3583 -49.5036);
+    --chart-5: lab(55.0248% -46.5432 -19.0039);
+    --sidebar: lab(9.31925% -.997268 -13.9476);
+    --sidebar-foreground: lab(90.7116% -1.09041 -3.56942);
+    --sidebar-primary: lab(46.3624% 5.18757 -61.7046);
+    --sidebar-primary-foreground: lab(98.84% .0000298023 -.0000119209);
+    --sidebar-accent: lab(18.5633% -1.51221 -17.4836);
+    --sidebar-accent-foreground: lab(94.2% 0 0);
+    --sidebar-border: lab(20.893% -1.69295 -17.5199);
+    --sidebar-ring: lab(46.3624% 5.18757 -61.7046);
+    --success: lab(56.01% -62.1515 32.3051);
+    --success-foreground: lab(98.84% .0000298023 -.0000119209);
+}
