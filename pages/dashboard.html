@@ -66,16 +66,22 @@
             <header class="topbar">
                 <div class="topbar-left">
                     <h1>Dashboard</h1>
-                    <p class="subtitle">Welcome back, Sarah</p>
                 </div>
                 <div class="topbar-right">
                     <div class="date-range">
-                        <input type="date" id="startDate" value="2024-01-01">
-                        <span>to</span>
-                        <input type="date" id="endDate" value="2024-06-30">
+                        <div class="month">This Month</div>
+                        <div class="year">This Year</div>
                     </div>
-                    <div class="user-avatar">
-                        <!-- <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="User"> -->
+                    <div class="noti-bell">
+                        <div class="icon bell">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell size-5 text-muted-foreground" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+                        </div>
+                        <div class="noti-bell-dot"></div>
+                    </div>
+                    <div class="user">
+                        <div class="name">Dung Nguyen</div>
+                        <div class="avatar">
+                            <img src="../assets/img/Background.png" alt="User Avatar" width="30px" height="30px">
                     </div>
                 </div>
             </header>
@@ -87,10 +93,9 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Total Income</h3>
-                            <svg class="icon income" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <polyline points="19 12 12 19 5 12"></polyline>
-                            </svg>
+                            <div class="icon-large">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up size-5 text-success" aria-hidden="true"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg>
+                            </div>
                         </div>
                         <div class="card-value">$8,450.00</div>
                         <div class="card-trend positive">+12.5% from last month</div>

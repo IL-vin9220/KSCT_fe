@@ -1,9 +1,9 @@
 header{
     width: 100%;
     height: 60px;
-    padding: 10px 20px;
+    padding: 14px 20px;
     box-sizing: border-box;
-    background-color: var(--background);
+    background-color: var(--card);
     color: var(--foreground);
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@ header{
 header > .topbar-left{
     display: flex;
     align-items: center;
-    width: 65%;
+    width: 55%;
     height: 100%;
 }
 
@@ -20,6 +20,91 @@ header > .topbar-right{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 35%;
+    width: 45%;
     height: 100%;
+    /* background-color: red; */
+    /* padding: 10px 0;
+    box-sizing: border-box; */
+}
+
+header > .topbar-right > div+div{
+    margin-left: 20px;
+}
+
+header > .topbar-right > .date-range{
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: 1px solid var(--muted);
+    border-radius: 15px;
+    background-color: var(--muted);
+}
+
+header > .topbar-right > .date-range > div{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+header > .topbar-right > .date-range > .month{
+    background-color: var(--card);
+}
+
+header > .topbar-right > .noti-bell{
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+
+header > .topbar-right > .noti-bell:hover{
+    cursor: pointer;
+    background-color: var(--muted);
+}
+
+header > .topbar-right > .noti-bell > .bell{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+header > .topbar-right > .noti-bell > .bell > *{
+    color: var(--muted-foreground);
+    font-size: 12px;
+}
+
+header > .topbar-right > .noti-bell > .noti-bell-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--destructive);
+    position: absolute;
+    top: 2px;
+    right: 4px;
+}
+
+header > .topbar-right > .user{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-left: 1px solid var(--foreground);
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+header > .topbar-right > .user > .avatar{
+    margin-left: 10px;
+}
+
+header > .topbar-right > .user > .avatar > img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
