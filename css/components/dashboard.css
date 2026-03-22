@@ -5,6 +5,10 @@
     box-sizing: border-box;
     overflow-y: auto;
     background-color: var(--muted);
+    /* display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px; */
 }
 
 .main-content > .summary-cards{
@@ -13,7 +17,7 @@
     display: grid;
     padding-top: 30px;
     box-sizing: border-box;
-    grid-template-columns: 220px 220px 220px 220px;
+    grid-template-columns: 230px 230px 230px 230px;
     /* gap: 20px; */
     /* align-items: center; */
     justify-content: space-between;
@@ -21,28 +25,42 @@
 
 .main-content > .charts-section{
     width: 100%;
-    height: calc(100% - 180px);
+    height: calc(100% - 180px - 20px);
     display: flex;
-    /* gap: 20px; */
+    gap: 20px;
     align-items: center;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    margin-top: 40px;
 }
 
 .main-content > .summary-cards > .card{
     background-color: var(--card);
-    padding: 15px 30px;
+    padding: 20px;
+    height: 170px;
     box-sizing: border-box;
     border-radius: 15px;
+    /* display: flex;
+    justify-content: space-between;
+    flex-direction: column; */
 }
 
 .main-content > .summary-cards > .card > .card-header{
     /* font-size: 16px; */
+    width: 100%;
+    height: 50px;
+    /* background-color: red; */
     font-weight: 600;
     color: var(--card-foreground);
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* background-color: red; */
+}
+
+.main-content > .summary-cards > .card > .card-header > h3{
+    font-size: 13px;
+    color: var(--muted-foreground);
 }
 
 .main-content > .summary-cards > .card > .card-header > .icon-large{
@@ -54,10 +72,145 @@
     border-radius: 10px;
 }
 
-.main-content > .summary-cards > .card > .card-header:nth-child(1) > .icon-large{
+.main-content > .summary-cards > .card:nth-child(1) .icon-large{
     background-color: color-mix(in oklab, var(--success) 10%, transparent);
 }
 
-.main-content > .summary-cards > .card > .card-header:nth-child(1) > .icon-large > svg{
+.main-content > .summary-cards > .card:nth-child(1) .icon-large > svg{
     color: var(--success);
 }
+
+.main-content > .summary-cards > .card:nth-child(2) .icon-large{
+    background-color: color-mix(in oklab, var(--destructive) 10%, transparent);
+}
+
+.main-content > .summary-cards > .card:nth-child(2) .icon-large > svg{
+    color: var(--destructive);
+}
+
+.main-content > .summary-cards > .card:nth-child(3) .icon-large{
+    background-color: color-mix(in oklab, var(--primary) 10%, transparent);
+}
+
+.main-content > .summary-cards > .card:nth-child(3) .icon-large > svg{
+    color: var(--primary);
+}
+
+.main-content > .summary-cards > .card:nth-child(4) .icon-large{
+    background-color: color-mix(in oklab, var(--destructive) 10%, transparent);
+}
+
+.main-content > .summary-cards > .card:nth-child(4) .icon-large > svg{
+    color: var(--destructive);
+}
+
+.main-content > .summary-cards > .card > .card-content{
+    width: 100%;
+    height: calc(100% - 25px - 50px);
+    /* background-color: aqua; */
+}
+
+.main-content > .summary-cards > .card > .card-content > .card-value{
+    font-size: 26px;
+    font-weight: 600;
+    width: 100%;
+    height: calc(100% - 22px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* background-color: aquamarine; */
+}
+
+.main-content > .summary-cards > .card > .card-content > .card-trend{
+    display: flex;
+    align-self: center;
+    height: 22px;
+    justify-content: flex-start;
+    margin-top: 5px;
+    margin-left: 10px;
+    /* background-color: bisque; */
+}
+
+.main-content > .summary-cards > .card > .card-content > .card-trend > p{
+    margin-left: 10px;
+}
+
+.main-content > .charts-section > .chart-card{
+    height: 100%;
+    background-color: var(--card);
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow:0 1px 3px rgba(0,0,0,0.08);
+}
+
+.main-content > .charts-section > .chart-card:nth-child(1){
+    width: 60%;
+
+}
+
+.main-content > .charts-section > .chart-card:nth-child(2){
+    width: 40%;
+}
+
+.main-content > .charts-section .category-chart{
+    width:50% !important;
+    height:50% !important;
+    /* display: block; */
+}
+
+.main-content > .charts-section > .chart-card:nth-child(2) .chart-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.main-content > .charts-section > .chart-card:nth-child(2) .chart-container > .donutlegend{
+    list-style-type: none;
+    min-width: 150px;
+    /* background-color: aqua; */
+}
+
+.main-content > .charts-section > .chart-card:nth-child(2) .chart-container > .donutlegend li{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.main-content > .charts-section > .chart-card:nth-child(2) .chart-container > .donutlegend li > *+*{
+    margin-left: 10px;
+}
+
+.main-content > .charts-section > .chart-card:nth-child(2) .chart-container > .donutlegend li > span:first-child{
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.main-content > .transactions-card{
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.main-content > .transactions-card > .table{
+    border-radius: 15px;
+}
+
+.main-content > .transactions-card > .table .tb-row{
+    grid-template-columns: 0.3fr 0.5fr 1fr 0.4fr 0.3fr;
+}
+
+/* .main-content > .charts-section > .chart-card #incomeExpenseChart{
+    width: 100%;
+    height: 100%;
+} */
+
+
+/* .chart-card{background:white;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,0.08)} */

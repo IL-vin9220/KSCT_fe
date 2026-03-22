@@ -1,6 +1,13 @@
 @import url('./layout/sidebar.css');
 @import url('./layout/header.css');
 
+@import url('./base/table.css');
+@import url('./base/button.css');
+@import url('./base/input.css');
+@import url('./base/icon.css');
+
+
+@import url('./components/transaction.css');
 @import url('./components/dashboard.css');
 
 *{
@@ -12,6 +19,7 @@ body{
     width: 100vw;
     height: 100vh;
     font-size: 14px;
+    font-family: 'Geist', 'Geist Fallback';
 }
 
 .container{

@@ -1,0 +1,133 @@
+.main-content{
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: var(--muted);
+}
+
+.main-content > .main-content-header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.main-content > .main-content-header > .main-content-left{
+    flex: 1;
+}
+
+.main-content > .main-content-header > .main-content-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    width: 50%;
+    height: 100%;
+}
+
+.main-content > .main-content-header > .main-content-right > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-content > .main-content-header > .main-content-right > .add-transaction{
+    width: 180px;
+    height: 50px;
+    /* background-color: var(--primary);
+    color: var(--popover); */
+    padding: 2px 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.main-content > .list-transaction{
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.main-content > .list-transaction > .list-filters{
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    height: 50px;
+    padding: 10px 20px 0 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border);
+}
+
+.main-content > .list-transaction > .list-filters > div{
+    padding: 5px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: var(--muted-foreground);
+}
+
+.main-content > .list-transaction > .list-filters > div:last-child{
+    display: none;
+}
+
+.main-content > .list-transaction > .list-filters > .active{
+    border-bottom: 2px solid var(--primary);
+    background-color: color-mix(in oklab, var(--muted-foreground) 10%, transparent);
+}
+
+.main-content > .list-transaction > .table{
+    width: 100%;
+    max-height: calc(100vh - 60px - 100px);
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-right{
+    width: 60%;
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-right > .list-items{
+    border-radius: 10px;
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-right > .list-items > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-right > .save-filter{
+    border-radius: 10px;
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-right .other > .icon{
+    /* width: 20px;
+    height: 20px; */
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-left{
+    width: 40%;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-left > div{
+    width: 100%;
+    height: 100%;
+}
+
+.main-content > .list-transaction > .table > .table-header > .tb-header-left .icon{
+    margin-left: 10px;
+}
+
+.main-content > .list-transaction > .table > .table-content .tb-row{
+    grid-template-columns: 50px 40px 105px calc(100% - 625px) 90px 120px 90px 130px;
+}
+
+/* .main-content > .list-transaction > .table > .table-content .tb-row > div{
+    background-color: red;
+} */

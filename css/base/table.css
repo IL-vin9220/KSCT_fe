@@ -1,0 +1,128 @@
+.table{
+    background-color: var(--card);
+    height: auto;;
+}
+
+.table-header{
+    display: flex;
+    align-self: center;
+    width: 100%;
+    height: 65px;
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+.table-header > .tb-header-left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 50%;
+    height: 100%;
+}
+
+.table-header > .tb-header-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex: 1;
+    height: 100%;
+}
+
+.table-header > .tb-header-left > .tb-header-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.table-footer{
+    display: flex;
+    align-self: center;
+    width: 100%;
+    height: 65px;
+    background-color: red;
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+.table-content{
+    width: 100%;
+    /* height: calc(100% - 130px); */
+    min-height: 80px;
+    /* height: auto; */
+    background-color: var(--card);
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.table-content .tb-row{
+    display: grid;
+    /* grid-template-columns: 0.3fr 0.5fr 1fr 0.4fr 0.3fr; */
+    align-items: center;
+    padding: 8px 10px 8px 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table-content .tb-row > *{
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.table-content .tb-row > .type{
+    justify-self: end;
+}
+
+.table-content > .tb-content-main > .tb-row:hover{
+    background-color: color-mix(in oklab, var(--muted) 50%, transparent);
+}
+
+.table-content > .tb-content-main > .tb-row > .type.expense{
+    padding: 5px 10px;
+    border-radius: 13.5px;
+    background-color: color-mix(in oklab, var(--destructive) 10%, transparent);;
+    color: var(--destructive);
+    border: 1px solid var(--destructive);
+}
+
+.table-content > .tb-content-main > .tb-row > .type.income{
+    padding: 5px 10px;
+    border-radius: 13.5px;
+    background-color: color-mix(in oklab, var(--success) 10%, transparent);;
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.table-content > .tb-content-main > .tb-row > .amount.expense{
+    color: var(--destructive);
+}
+
+.table-content > .tb-content-main > .tb-row > .amount.income{
+    color: var(--success);
+}
+
+.table-content > .tb-content-main > .tb-row > .category{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.table-content > .tb-content-main > .tb-row > .category > .sub-category{
+    padding: 2px 8px;
+    box-sizing: border-box;
+    color: var(--secondary-foreground);
+    background-color: var(--secondary);
+    border-radius: 10px;
+}
+
+.table-content > .tb-content-main > .tb-row > .name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+

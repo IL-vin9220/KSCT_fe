@@ -1,0 +1,24 @@
+.input-wrapper{
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background-color: color-mix(in oklab, var(--muted-foreground) 10%, transparent);
+    display: flex;
+    align-items: center;
+}
+
+.input{
+    outline: unset;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.input-search{
+    outline: unset;
+    border: none;
+    width: calc(100% - 32px - 10px);
+    background-color: transparent;
+    height: 100%;
+    margin-left: 10px;
+}
