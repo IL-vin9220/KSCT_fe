@@ -1,6 +1,9 @@
 .table{
     background-color: var(--card);
-    height: auto;;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* height: auto;; */
 }
 
 .table-header{
@@ -47,7 +50,11 @@
 
 .table-content{
     width: 100%;
-    /* height: calc(100% - 130px); */
+    flex: 0 1 auto;
+    
+    min-height: 80px;
+    max-height: calc(100% - 130px);
+    /* max-height: calc(100% - 130px); */
     min-height: 80px;
     /* height: auto; */
     background-color: var(--card);

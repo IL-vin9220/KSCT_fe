@@ -78,7 +78,8 @@
 
 .main-content > .list-transaction > .table{
     width: 100%;
-    max-height: calc(100vh - 60px - 100px);
+    min-height: 190px;
+    height: calc(100% - 50px);
     padding: 10px 0;
     box-sizing: border-box;
     border-radius: 10px;
