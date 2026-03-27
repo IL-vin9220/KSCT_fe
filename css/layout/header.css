@@ -56,31 +56,31 @@ header > .topbar-right > .date-range > .month{
     background-color: var(--card);
 }
 
-header > .topbar-right > .noti-bell{
+header > .topbar-right > .wrap-icon{
     position: relative;
     width: 32px;
     height: 32px;
     border-radius: 8px;
 }
 
-header > .topbar-right > .noti-bell:hover{
+header > .topbar-right > .wrap-icon:hover{
     cursor: pointer;
     background-color: var(--muted);
 }
 
-header > .topbar-right > .noti-bell > .bell{
+header > .topbar-right > .wrap-icon > .bell{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-header > .topbar-right > .noti-bell > .bell > *{
+header > .topbar-right > .wrap-icon > .bell > *{
     color: var(--muted-foreground);
     font-size: 12px;
 }
 
-header > .topbar-right > .noti-bell > .noti-bell-dot{
+header > .topbar-right > .wrap-icon > .noti-bell-dot{
     width: 8px;
     height: 8px;
     border-radius: 50%;

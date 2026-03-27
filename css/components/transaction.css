@@ -12,6 +12,7 @@
     align-items: center;
     width: 100%;
     height: 50px;
+    /* border-bottom: 1px solid var(--border); */
 }
 
 .main-content > .main-content-header > .main-content-left{
@@ -35,20 +36,23 @@
 
 .main-content > .main-content-header > .main-content-right > .add-transaction{
     width: 180px;
-    height: 50px;
+    height: 40px;
     /* background-color: var(--primary);
     color: var(--popover); */
-    padding: 2px 15px;
+    padding: 2px 5px;
     box-sizing: border-box;
     border-radius: 10px;
 }
 
 .main-content > .list-transaction{
+    /* display: none; */
     width: 100%;
     height: calc(100% - 50px);
+    /* padding-top: 10px;
+    box-sizing: border-box; */
 }
 
-.main-content > .list-transaction > .list-filters{
+.main-content > .main-content-header > .main-content-left > .list-filters{
     display: flex;
     align-items: center;
     justify-items: flex-start;
@@ -57,21 +61,20 @@
     height: 50px;
     padding: 10px 20px 0 20px;
     box-sizing: border-box;
-    border-bottom: 1px solid var(--border);
 }
 
-.main-content > .list-transaction > .list-filters > div{
+.main-content > .main-content-header > .main-content-left > .list-filters > div{
     padding: 5px 10px;
     box-sizing: border-box;
     cursor: pointer;
     color: var(--muted-foreground);
 }
 
-.main-content > .list-transaction > .list-filters > div:last-child{
+.main-content > .main-content-header > .main-content-left > .list-filters > div:last-child{
     display: none;
 }
 
-.main-content > .list-transaction > .list-filters > .active{
+.main-content > .main-content-header > .main-content-left > .list-filters > .active{
     border-bottom: 2px solid var(--primary);
     background-color: color-mix(in oklab, var(--muted-foreground) 10%, transparent);
 }
@@ -79,7 +82,7 @@
 .main-content > .list-transaction > .table{
     width: 100%;
     min-height: 190px;
-    height: calc(100% - 50px);
+    max-height: 100%;
     padding: 10px 0;
     box-sizing: border-box;
     border-radius: 10px;
