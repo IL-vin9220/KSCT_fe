@@ -5,6 +5,7 @@
 @import url('./base/button.css');
 @import url('./base/input.css');
 @import url('./base/icon.css');
+@import url('./base/scrollbar.css');
 
 
 @import url('./components/transaction.css');

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components/expenseCategory.css">
     <link rel="stylesheet" href="../assets/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="icon" href="../assets/KiemSoatChiTieu_logo.ico">
 </head>
 <body>
     <div class="container">
@@ -14,9 +15,7 @@
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
-                    <div class="logo-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-icon lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
-                    </div>
+                    <img src="../assets/KiemSoatChiTieu_logo (1).png" width="30px" height="30px" alt="Kiểm Soát Chi Tiêu">
                     <span>Kiểm Soát Chi Tiêu</span>
                 </div>
             </div>
@@ -95,12 +94,220 @@
             <div class="main-content">
                 <div class="main-content-left">
                     <ul class="parent">
-                        <div class="category-icon"></div>
-                        <div class="category-name">Ăn uống</div>
+                        <div class="parent-info">
+                            <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
+                            <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                            <div class="category-name">Ăn uống</div>
+                        </div>
                         <li class="child">
                             <div class="category-child-left">
-                                <div class="category-icon"></div>
-                                <div class="category-name"></div>
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Sáng</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Trưa</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <!-- <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Tối</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <ul class="parent">
+                        <div class="parent-info">
+                            <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
+                            <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                            <div class="category-name">Mua Sắm</div>
+                        </div>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Quần áo</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Đồ Dùng Sinh Hoạt</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Đồ Gia Dụng</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="parent">
+                        <div class="parent-info">
+                            <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
+                            <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                            <div class="category-name">Ăn uống</div>
+                        </div>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Sáng</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Trưa</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <!-- <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Tối</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <ul class="parent">
+                        <div class="parent-info">
+                            <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
+                            <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                            <div class="category-name">Mua Sắm</div>
+                        </div>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Quần áo</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Đồ Dùng Sinh Hoạt</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Đồ Gia Dụng</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="parent">
+                        <div class="parent-info">
+                            <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
+                            <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                            <div class="category-name">Ăn uống</div>
+                        </div>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Sáng</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Trưa</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <!-- <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Ăn Tối</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <ul class="parent">
+                        <div class="parent-info">
+                            <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
+                            <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                            <div class="category-name">Mua Sắm</div>
+                        </div>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Quần áo</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Đồ Dùng Sinh Hoạt</div>
+                            </div>
+                            <div class="category-child-right">
+                                <div class="icon"><i class="fi fi-rs-pencil"></i></div>
+                                <div class="icon"><i class="fi fi-rs-trash"></i></div>
+                            </div>
+                        </li>
+                        <li class="child">
+                            <div class="category-child-left">
+                                <div class="icon category-icon"><i class="fi fi-rs-marker"></i></div>
+                                <div class="category-name">Đồ Gia Dụng</div>
                             </div>
                             <div class="category-child-right">
                                 <div class="icon"><i class="fi fi-rs-pencil"></i></div>
@@ -112,11 +319,23 @@
                 <div class="main-content-right">
                     <div class="main-content-right-top">
                         <div class="main-content-right-top-head">
-                            <span></span>
+                            <span>Thời Gian</span>
+                            <input type="date" name="" id="">
                         </div>
-                        <div class="main-content-right-top-content"></div>
+                        <div class="main-content-right-top-content">
+                            <canvas class="pie-chart" id="pieChart"></canvas>
+                            <div class="percent-category">
+                                <div class="color-category red"></div>
+                                <div class="percent" id="percentCategory">30%</div>
+                                <div class="name-percent-category">05/10/2026</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="main-content-right-bottom"></div>
+                    <div class="main-content-right-bottom">
+                        <div class="table">
+                            <div class="table-content"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
