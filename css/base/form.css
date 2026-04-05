@@ -1,0 +1,64 @@
+.form{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    display: block;
+    z-index: 999;
+    transition: 0.5s;
+    inset: 0;
+}
+
+.form > .dialog{
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: var(--card);
+    border-radius: 10px;
+}
+
+.form > .dialog > *+*{
+    margin-top: 10px;
+}
+
+.form > .dialog > .dialog-header{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+
+.form > .dialog > .dialog-content{
+    width: 100%;
+    height: calc(100% - 80px);
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border);
+}
+
+.form > .dialog > .dialog-footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 50px;
+}
+
+.form > .dialog > .dialog-footer > *{
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.form > .dialog > .dialog-footer > *+*{
+    margin-left: 10px;
+}
+
+.form > .dialog > .dialog-header > .dialog-header-name{
+    font-size: 20px;
+}

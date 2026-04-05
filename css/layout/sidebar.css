@@ -8,11 +8,14 @@
     /* justify-content: center; */
 }
 
-.sidebar-nav-wrapper{
+.sidebar-nav-wapper{
     margin-top: 12px;
     width: 100%;
-    height: calc(100% - 100px - 100px - 24px);
+    flex: 1;
+    /* height: calc(100% - 200px - 24px); */
     position: relative;
+    display: flex;
+    align-items: center;
     overflow: hidden;
 }
 
@@ -55,16 +58,17 @@
 
 .sidebar-nav{
     /* margin-top: 12px; */
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    /* display: flex;
+    flex-direction: column; */
+    /* width: 100%; */
+    flex: 1;
     overflow-y: auto;
     height: 100%;
     scrollbar-width: none;
 }
 
 .sidebar-nav::-webkit-scrollbar{
-    display: none;
+    /* display: none; */
 }
 
 .sidebar-nav li{
@@ -108,7 +112,7 @@
 .sidebar-nav li > .sub-menu{
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25 ease;
+    transition: max-height 0.25s ease;
     /* box-sizing: border-box;
     width: 100%;
     display: none; */
@@ -121,48 +125,4 @@
 .sidebar-nav li > .sub-menu > li span{
     padding-left: 18px;
     box-sizing: border-box;
-}
-
-/* scrollbar container */
-.sidebar-nav-wrapper > .scrollbar {
-    position: absolute;
-    right: 4px;
-    top: 8px;
-    bottom: 8px;
-    width: 5px;
-    transition: 0.25s ease;
-    opacity: 0.4;
-    pointer-events: auto;
-    background-color: red;
-}
-
-/* hover vào content HOẶC scrollbar đều to ra */
-
-.sidebar-nav-wrapper > .scrollbar:hover {
-    width: 8px;
-    opacity: 1;
-}
-
-.sidebar-nav-wrapper:hover > .scrollbar{
-    width: 8px;
-    opacity: 1;
-}
-
-/* thumb */
-.sidebar-nav-wrapper > .scrollbar > .thumb {
-    position: absolute;
-    width: 100%;
-    background: rgba(255,255,255,0.3);
-    border-radius: 20px;
-    top: 0;
-    transition: 0.2s ease;
-    cursor: pointer;
-}
-
-.sidebar-nav-wrapper > .scrollbar:hover .thumb {
-    background: rgba(255,255,255,0.6);
-}
-
-.sidebar-nav-wrapper > .scrollbar > .thumb:hover {
-    background: rgba(255,255,255,0.9);
 }

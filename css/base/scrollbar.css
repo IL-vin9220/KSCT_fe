@@ -1,0 +1,44 @@
+.scrollbar  {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 8px;
+    width: 5px;
+    height: 100%;
+    transition: width 0.25s ease;
+    opacity: 0.4;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* hover vào content HOẶC scrollbar đều to ra */
+
+.scrollbar:hover {
+    width: 8px;
+    opacity: 1;
+}
+
+.sidebar-nav-wapper:hover > .scrollbar{
+    width: 8px;
+    opacity: 1;
+}
+
+/* thumb */
+.scrollbar > .thumb {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    background: var(--muted );
+    border-radius: 20px;
+    top: 0;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.scrollbar:hover .thumb {
+    background: rgba(255,255,255,0.6);
+}
+
+.scrollbar > .thumb:hover {
+    background: rgba(255,255,255,0.9);
+}

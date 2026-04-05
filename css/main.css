@@ -6,9 +6,8 @@
 @import url('./base/input.css');
 @import url('./base/icon.css');
 @import url('./base/scrollbar.css');
+@import url('./base/form.css');
 
-
-@import url('./components/transaction.css');
 @import url('./components/dashboard.css');
 
 *{
@@ -32,6 +31,9 @@ body{
 .sidebar{
     width: 20%;
     height: 100%;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
     padding: 10px 20px;
     box-sizing: border-box;
     background-color: var(--sidebar);

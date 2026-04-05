@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiểm Soát Chi Tiêu</title>
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/components/transaction.css">
+    <link rel="stylesheet" href="../css/components/category.css">
     <link rel="stylesheet" href="../assets/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="icon" href="../assets/KiemSoatChiTieu_logo.ico">
 </head>
 <body>
     <div class="container">
@@ -14,9 +15,7 @@
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
-                    <div class="logo-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-icon lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
-                    </div>
+                    <img src="../assets/KiemSoatChiTieu_logo (1).png" width="30px" height="30px" alt="Kiểm Soát Chi Tiêu">
                     <span>Kiểm Soát Chi Tiêu</span>
                 </div>
             </div>
@@ -140,14 +139,15 @@
         <div class="content">
             <header class="topbar">
                 <div class="topbar-left">
-                    <h1>Danh Sách Giao Dịch</h1>
+                    <h1>Danh Mục Chi Tiêu</h1>
                 </div>
                 <div class="topbar-right">
-                    <div class="date-range">
-                        <div class="month">This Month</div>
-                        <div class="year">This Year</div>
-                    </div>
-                    <div class="noti-bell">
+                    <div class="wrap-icon">
+                        <div class="icon interrogation">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark-icon lucide-circle-question-mark"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                        </div>
+                    </div> 
+                    <div class="wrap-icon">
                         <div class="icon bell">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell size-5 text-muted-foreground" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
                         </div>
@@ -164,17 +164,7 @@
             <div class="main-content">
                 <div class="main-content-header">
                     <div class="main-content-left">
-                        <div class="list-filters">
-                            <div class="all active">Tất cả</div>
-                            <div class="today">Hôm nay</div>
-                            <div class="month">Tháng này</div>
-                            <div class="evening">Buổi tối</div>
-                            <div class="income">Thu nhập</div>
-                            <div class="expense">Chi tiêu</div>
-                            <div class="more">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal size-5" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="main-content-right">
                         <div class="export-file btn-trans">
@@ -189,15 +179,15 @@
                             </div>
                             <div class="text">Nhập File</div>
                         </div>
-                        <div class="add-transaction btn">
+                        <div class="add-category btn" id="addCategory">
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus size-5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </div>
-                            <div class="text">Thêm Giao Dịch</div>
+                            <div class="text">Thêm Danh Mục</div>
                         </div>
                     </div>
                 </div>
-                <div class="list-transaction">
+                <div class="list-category">
                     <div class="table">
                         <div class="table-header">
                             <div class="tb-header-left">
@@ -229,131 +219,80 @@
                         </div>
                         <div class="table-content">
                             <div class="tb-row tb-content-head">
-                                <input type="checkbox" name="" id="ckb" class="ckb">
+                                <span></span>
                                 <div class="stt">STT</div>
-                                <div class="code">Mã Giao Dịch</div>
-                                <div class="name">Tên Giao Dịch</div>
-                                <div class="amount">Số Tiền</div>
-                                <div class="date">Ngày Ghi Nhận</div>
-                                <div class="time">Thời Điểm</div>
-                                <div class="type">Loại Giao Dịch</div>
+                                <div class="code">Tên Danh Mục</div>
+                                <div class="type">Loại Danh Mục</div>
                             </div>
                             <div class="tb-content-main">
                                 <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
+                                    <div class="code">Chi Tiêu</div>
+                                    <div class="type expense">Chi Tiêu</div>
                                 </div>
                                 <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
-                                </div>
-                                <!-- <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
+                                    <div class="code">Thu Nhập</div>
                                     <div class="type income">Thu Nhập</div>
                                 </div>
                                 <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">1</div>
                                     <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
                                     <div class="type expense">Chi tiêu</div>
                                 </div>
                                 <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">2</div>
                                     <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
                                     <div class="type income">Thu Nhập</div>
                                 </div>
                                 <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">1</div>
                                     <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
                                     <div class="type expense">Chi tiêu</div>
                                 </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
-                                </div> -->
                             </div>
-                        </div>
-                        <div class="table-footer">
-                            <div class="tb-footer-left">
-                                <p>Tổng số: </p>
-                                <span class="total-record" id="totalRecord">1000 bản ghi</span>
-                            </div>
-                            <div class="tb-footer-right"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="form add-new" id="addNew">
+            <div class="dialog">
+                <div class="dialog-header">
+                    <div class="dialog-header-name">Thêm Mới Danh Mục</div>
+                    <div class="icon close-form"><i class="fi fi-rs-cross-small"></i></div>
+                </div>
+                <div class="dialog-content">
+                    <div class="category-name">
+                        <label for="categoryName">Tên Danh Mục:</label>
+                        <div class="input-wrapper"><input type="text" class="input" id="categoryName"></div>
+                    </div>
+                    <div class="category-parent">
+                        <label for="categoryParent">Danh Mục cha:</label>
+                        <div class="input-wrapper"><input type="text" class="input" id="categoryParent"></div>
+                    </div>
+                    <div class="category-icon">
+                        <label for="categoryIcon">Icon:</label>
+                        <div class="input-wrapper"><input type="text" class="input" id="categoryIcon"></div>
+                    </div>
+                    <div class="category-description">
+                        <label for="categoryDescription">Mô tả:</label>
+                        <div class="input-wrapper"><textarea name="" id="categoryDescription" class="text-area"></textarea></div>
+                    </div>
+                </div>
+                <div class="dialog-footer">
+                    <div class="btn save" id="addNewCategory">Lưu</div>
+                    <div class="btn close" id="closeForm">Đóng</div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
-<script src="../js/transaction.js"></script>
+<script src="../js/components/category.js"></script>
+<script src="../js/common/common.js"></script>
 </html>
