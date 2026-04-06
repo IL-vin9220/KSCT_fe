@@ -83,4 +83,5 @@ body{
     --sidebar-ring: lab(46.3624% 5.18757 -61.7046);
     --success: lab(56.01% -62.1515 32.3051);
     --success-foreground: lab(98.84% .0000298023 -.0000119209);
+    --in-active: lab(72.04% 30.69 77.09);
 }

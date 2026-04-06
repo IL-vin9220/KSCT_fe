@@ -221,38 +221,140 @@
                             <div class="tb-row tb-content-head">
                                 <span></span>
                                 <div class="stt">STT</div>
-                                <div class="code">Tên Danh Mục</div>
+                                <div class="name">Tên Danh Mục</div>
+                                <div class="is-active">Tình Trạng</div>
                                 <div class="type">Loại Danh Mục</div>
                             </div>
                             <div class="tb-content-main">
                                 <div class="tb-row">
-                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
-                                    <div class="stt">1</div>
-                                    <div class="code">Chi Tiêu</div>
-                                    <div class="type expense">Chi Tiêu</div>
+                                    <div class="parent">
+                                        <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                        <div class="stt">1</div>
+                                        <div class="name">Chi Tiêu</div>
+                                        <div class="is-active active">Đang Hoạt Động</div>
+                                        <div class="type expense">Chi Tiêu</div>
+                                    </div>
+                                    <div class="child">
+                                        <div class="tb-row-child-head">
+                                            <div class="icon"><input type="checkbox" class="input" id="ckb"></div>
+                                            <div class="stt">STT</div>
+                                            <div class="name">Tên Danh Mục</div>
+                                            <div class="transaction">Tổng Giao Dịch</div>
+                                            <div class="is-active">Tình Trạng</div>
+                                            <div class="amount">Tổng Giá Trị</div>
+                                        </div>
+                                        <div class="tb-row-child-content">
+                                            <div class="icon"><input type="checkbox" class="input" id="ckb"></div>
+                                            <div class="stt">1</div>
+                                            <div class="name">Mua Nhà</div>
+                                            <div class="transaction">15.000 GD</div>
+                                            <div class="is-active active">Đang Sử Dụng</div>
+                                            <div class="amount">1.350.000.000</div>
+                                        </div>
+                                        <div class="tb-row-child-content">
+                                            <div class="icon"><input type="checkbox" class="input" id="ckb"></div>
+                                            <div class="stt">1</div>
+                                            <div class="name">Mua Đồ Mới</div>
+                                            <div class="transaction">15.000 GD</div>
+                                            <div class="is-active in-active">Tạm Ngưng</div>
+                                            <div class="amount">1.350.000.000</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tb-row">
+                                    <div class="parent">
+                                        <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                        <div class="stt">1</div>
+                                        <div class="name">Chi Tiêu</div>
+                                        <div class="is-active active">Đang Hoạt Động</div>
+                                        <div class="type income">Chi Tiêu</div>
+                                        
+                                    </div>
+                                    <div class="child">
+                                        <div class="tb-row-child-head">
+                                            <div class="icon"><input type="checkbox" class="input" id="ckb"></div>
+                                            <div class="stt">STT</div>
+                                            <div class="name">Tên Danh Mục</div>
+                                            <div class="transaction">Tổng Giao Dịch</div>
+                                            <div class="is-active">Tình Trạng</div>
+                                            <div class="amount">Tổng Giá Trị</div>
+                                        </div>
+                                        <div class="tb-row-child-content">
+                                            <div class="icon"><input type="checkbox" class="input" id="ckb"></div>
+                                            <div class="stt">1</div>
+                                            <div class="name">Mua Nhà</div>
+                                            <div class="transaction">15.000 GD</div>
+                                            <div class="is-active active">Đang Sử Dụng</div>
+                                            <div class="amount">1.350.000.000</div>
+                                        </div>
+                                        <div class="tb-row-child-content">
+                                            <div class="icon"><input type="checkbox" class="input" id="ckb"></div>
+                                            <div class="stt">1</div>
+                                            <div class="name">Mua Đồ Mới</div>
+                                            <div class="transaction">15.000 GD</div>
+                                            <div class="is-active in-active">Tạm Ngưng</div>
+                                            <div class="amount">1.350.000.000</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tb-row">
                                     <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">2</div>
-                                    <div class="code">Thu Nhập</div>
+                                    <div class="name">Thu Nhập</div>
                                     <div class="type income">Thu Nhập</div>
                                 </div>
                                 <div class="tb-row">
                                     <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
+                                    <div class="name">PMar2026121</div>
                                     <div class="type expense">Chi tiêu</div>
                                 </div>
                                 <div class="tb-row">
                                     <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
+                                    <div class="name">PMar2026121</div>
                                     <div class="type income">Thu Nhập</div>
                                 </div>
                                 <div class="tb-row">
                                     <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
                                     <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
+                                    <div class="name">PMar2026121</div>
+                                    <div class="type expense">Chi tiêu</div>
+                                </div>
+                                <div class="tb-row">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                    <div class="stt">2</div>
+                                    <div class="name">PMar2026121</div>
+                                    <div class="type income">Thu Nhập</div>
+                                </div>
+                                <div class="tb-row">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                    <div class="stt">1</div>
+                                    <div class="name">PMar2026121</div>
+                                    <div class="type expense">Chi tiêu</div>
+                                </div>
+                                <div class="tb-row">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                    <div class="stt">2</div>
+                                    <div class="name">PMar2026121</div>
+                                    <div class="type income">Thu Nhập</div>
+                                </div>
+                                <div class="tb-row">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                    <div class="stt">1</div>
+                                    <div class="name">PMar2026121</div>
+                                    <div class="type expense">Chi tiêu</div>
+                                </div>
+                                <div class="tb-row">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                    <div class="stt">2</div>
+                                    <div class="name">PMar2026121</div>
+                                    <div class="type income">Thu Nhập</div>
+                                </div>
+                                <div class="tb-row">
+                                    <div class="icon cate-parent" id="cateParent"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                    <div class="stt">1</div>
+                                    <div class="name">PMar2026121</div>
                                     <div class="type expense">Chi tiêu</div>
                                 </div>
                             </div>

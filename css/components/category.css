@@ -128,9 +128,96 @@
     margin-left: 10px;
 }
 
-.main-content > .list-category > .table > .table-content .tb-row{
-    grid-template-columns: 50px 80px 1fr 150px;
+.main-content > .list-category > .table > .table-content .tb-row > * {
+    width: 100%;
+    display: grid;
+    align-items: center;
 }
+
+.main-content > .list-category > .table > .table-content .tb-content-head{
+    grid-template-columns: 50px 80px 1fr 150px 150px;
+    /* padding-left: 10px;
+    box-sizing: border-box; */
+}
+
+.main-content > .list-category > .table > .table-content .tb-content-head input, .stt, .is-active{
+    justify-content: center;
+}
+
+.main-content > .list-category > .table > .table-content .tb-content-head .type{
+    justify-content: flex-end;
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .parent{
+    height: 40px;
+    grid-template-columns: 50px 80px 1fr 150px 150px;
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .parent > .icon:hover ~ .child{
+    display: none;
+    transition: display 1.5s ease;
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .parent .icon, .stt, .is-active{
+    justify-self: center;
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .parent .type{
+    justify-self: flex-end;
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .parent .name{
+    /* padding-left: 10px;
+    box-sizing: border-box; */
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .child{
+    /* padding-left: 50px;
+    box-sizing: border-box; */
+    /* border-top: 1px solid var(--border); */
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .child > .tb-row-child-head, .tb-row-child-content{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50px 80px 1fr 150px 150px 150px;
+    height: 40px;
+    /* gap: 15px; */
+    /* background-color: red; */
+    margin-top: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .child > * > *{
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.main-content > .list-category > .table > .table-content .tb-row .is-active.active{
+    padding: 5px 10px;
+    border-radius: 13.5px;
+    background-color: color-mix(in oklab, var(--success) 10%, transparent);;
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.main-content > .list-category > .table > .table-content .tb-row .is-active.in-active{
+    padding: 5px 10px;
+    border-radius: 13.5px;
+    background-color: color-mix(in oklab, var(--in-active) 10%, transparent);;
+    color: var(--in-active);
+    border: 1px solid var(--in-active);
+}
+
+.main-content > .list-category > .table > .table-content .tb-row > .child > .tb-row-child-content+.tb-row-child-content{
+    margin-top: 10px;
+}
+
+/* .main-content > .list-category > .table > .table-content .tb-row > .child input{
+    width: 15px;
+    height: 15px;
+} */
 
 /* .main-content > .list-category > .table > .table-content .tb-row > div{
     background-color: red;
