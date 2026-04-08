@@ -1,16 +1,22 @@
+import {api} from "../common/config.js"
+
 async function login(){
     try {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
 
-        console.log("username: ", username);
-        console.log("password: ", password);
+        // console.log("username: ", username);
+        // console.log("password: ", password);
 
-        let res = await fetch("https://be-nodejs-kiem-soat-chi-tieu.vercel.app/api/user/get-user?username='${username}'&password='${password}'", {
-            method: "GET",
+        let res = await fetch(`${api.API_URL}/api/user/get-user`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
         });
 
         if (!res.ok) {
@@ -30,6 +36,8 @@ async function login(){
     }
 
 }
+
+document.getElementById("login").addEventListener("click", login);
 
 function loginFacebook(){
 alert("Demo đăng nhập bằng Facebook");
