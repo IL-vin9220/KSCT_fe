@@ -136,8 +136,8 @@
 
 .main-content > .list-category > .table > .table-content .tb-content-head{
     grid-template-columns: 50px 80px 1fr 150px 150px;
-    /* padding-left: 10px;
-    box-sizing: border-box; */
+    padding-left: 10px;
+    box-sizing: border-box;
 }
 
 .main-content > .list-category > .table > .table-content .tb-content-head input, .stt, .is-active{
