@@ -24,8 +24,8 @@ addCategory.addEventListener("click", addNewCategoryEvent);
 
 function addNewCategoryEvent(){
     let container = document.querySelector(".container");
-    console.log(container);
-    console.log(document.getElementById("addNew"));
+    // console.log(container);
+    // console.log(document.getElementById("addNew"));
     
     if(document.getElementById("addNew")) return;
 
