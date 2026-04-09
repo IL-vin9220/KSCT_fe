@@ -1,26 +1,50 @@
-function login(){
+import {api} from "../common/config.js"
 
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+async function login(){
+    try {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
 
-    // gửi thông tin tới be xác thực người dùng
+        // console.log("username: ", username);
+        // console.log("password: ", password);
 
-    let user = JSON.parse(localStorage.getItem("user"));
+        let res = await fetch(`${api.API_URL}/api/user/get-user`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
 
-    if(user && username === user.username && password === user.password){
+        if (!res.ok) {
+            throw new Error("Không xác thực được người dùng");
+        }
 
-        window.location.href="../pages/dashboard.html";
-    }else{
+        let user = await res.json();
 
-    // alert("Sai tài khoản hoặc mật khẩu");
-        window.location.href="../pages/dashboard.html";
+        console.log("User:", user);
+
+        location.href = "../../pages/dashboard.html";
+
+        return user;
+    } catch (error) {
+        console.error(error);
+
+        // nếu chưa login thì redirect
+        alert("Sai thông tin")
     }
+
 }
 
+document.getElementById("login").addEventListener("click", login);
+
 function loginFacebook(){
-    alert("Demo đăng nhập bằng Facebook");
+alert("Demo đăng nhập bằng Facebook");
 }
 
 function loginGoogle(){
-    alert("Demo đăng nhập bằng Google");
+alert("Demo đăng nhập bằng Google");
 }
