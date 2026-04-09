@@ -27,6 +27,8 @@ async function login(){
 
         console.log("User:", user);
 
+        location.href = "../../pages/dashboard.html";
+
         return user;
     } catch (error) {
         console.error(error);
