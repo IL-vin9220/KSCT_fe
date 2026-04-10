@@ -143,10 +143,10 @@
                     <h1>Danh Sách Giao Dịch</h1>
                 </div>
                 <div class="topbar-right">
-                    <div class="date-range">
+                    <!-- <div class="date-range">
                         <div class="month">This Month</div>
                         <div class="year">This Year</div>
-                    </div>
+                    </div> -->
                     <div class="noti-bell">
                         <div class="icon bell">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell size-5 text-muted-foreground" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
@@ -163,7 +163,7 @@
 
             <div class="main-content">
                 <div class="main-content-header">
-                    <div class="main-content-left">
+                    <div class="main-content-left" style="opacity: 0;">
                         <div class="list-filters">
                             <div class="all active">Tất cả</div>
                             <div class="today">Hôm nay</div>
@@ -189,7 +189,7 @@
                             </div>
                             <div class="text">Nhập File</div>
                         </div>
-                        <div class="add-transaction btn" id="btn_addNewTransaction">
+                        <div class="add-transaction btn" id="btn_addNewTransaction" onclick="addNewTransaction()">
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus size-5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                             </div>
@@ -208,7 +208,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tb-header-right">
+                            <div class="tb-header-right" style="opacity: 0;">
                                 <div class="list-items btn-parent">
                                     <div class="create-date btn-child">Ngày Tạo</div>
                                     <div class="category btn-child">
@@ -352,7 +352,7 @@
                 </div>
             </div>
         </div>
-        <div class="form add-new" id="addNewTransaction">
+        <!-- <div class="form add-new" id="addNewTransaction">
             <div class="dialog">
                 <div class="dialog-header">
                     <div class="dialog-header-name">Thêm Giao Dịch</div>
@@ -393,8 +393,8 @@
                     <div class="btn close" id="closeForm">Đóng</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
-<script src="../js/transaction.js"></script>
+<script src="../js/components/transaction.js"></script>
 </html>

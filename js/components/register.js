@@ -1,12 +1,10 @@
-import {api} from "../common/config.js"
-
 async function login(){
     try {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
-
-        // console.log("username: ", username);
-        // console.log("password: ", password);
+        let replypassword = document.getElementById("replypassword").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
 
         let res = await fetch(`${api.API_URL}/api/user/get-user`, {
             method: "POST",
@@ -27,26 +25,11 @@ async function login(){
 
         localStorage.setItem("user", JSON.stringify(user.data));
 
-        console.log("User:", user);
-
         location.href = "../../pages/dashboard.html";
 
         return user;
     } catch (error) {
         console.error(error);
-
-        // nếu chưa login thì redirect
-        alert("Sai thông tin")
     }
 
-}
-
-document.getElementById("login").addEventListener("click", login);
-
-function loginFacebook(){
-alert("Demo đăng nhập bằng Facebook");
-}
-
-function loginGoogle(){
-alert("Demo đăng nhập bằng Google");
 }
