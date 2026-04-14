@@ -5,4 +5,23 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border: unset;
+    outline: none;
+}
+
+.icon-rectangle{
+    border-radius: 8px;
+}
+
+.icon-circle{
+    border-radius: 50%;
+}
+
+.icon-rectangle:hover, .icon-rectangle:hover{
+    background-color: var(--muted);
+}
+
+.icon.disable{
+    opacity: 0;
+    cursor: auto;
 }

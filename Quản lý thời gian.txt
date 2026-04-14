@@ -1,0 +1,48 @@
+- danh mục (1h)
+- ví tiền
+	* ds ví (1h)
+	* lịch sử giao dịch (1h)
+- quỹ
+	* ds quỹ (1h)
+	* lịch sử giao dịch(1h)
+- báo cáo
+	* tổng quan báo cáo (1h)
+	* ds báo cáo (1h)
+	* báo cáo của các thành phần
+- cấu hình
+	* ds các mục trong cấu hình (1h)
+	* màn hình chi tiết (1h)
+
+----------------------------------------------
+12/04: tối 21h30 - 1h => 3h30p
+13/04: tối 19h - 1h => 6h
+14/04: tối 19h - 20h + 22h - 1h => 4h
+15/04: tối 22h - 1h => 3h
+16/04: tối 19h - 20h + 22h - 1h => 4h
+17/04: tối 21h30 - 1h => 3h30p
+18/04: => 15h30p
+	* sáng: 7h - 12h => 5h
+	* trưa: 12r - 13h => 30p
+	* chiều: 13h - 18h => 5h
+	* tối: 20h - 1h => 5h
+19/04: => 15h30p
+	* sáng: 7h - 12h => 5h
+	* trưa: 12r - 13h => 30p
+	* chiều: 13h - 18h => 5h
+	* tối: 20h - 1h => 5h
+------------------------------------
+12/04: 3h30p
+13/04: 6h
+14/04: 4h
+15/04: 3h
+16/04: 4h
+17/04: 3h30p
+18/04: 15h30p
+19/04: 15h30p
+------------------  => 55h = 13h30p + 41h30p
+13h30p = UI(bỏ báo cáo): 7h + BE(crud cate, trans, fund, wallet; signIn, signUp; setting): 6h30p
+41h30p = UI(báo cáo + animation): 7h + BE: 34h30p
+
+=> kết luận:
+FE: complete ~ 80% ( full UI + 40% animation + 0% responsive)
+BE: complete ~ 50% ( crud, auth, ... + 0% machine learning)

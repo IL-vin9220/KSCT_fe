@@ -2,12 +2,21 @@
     background-color: var(--primary);
     cursor: pointer;
     color: var(--popover);
+    border-radius: 8px;
+    /* min-height: 30px; */
+    padding: 5px 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .btn-trans{
     cursor: pointer;
     padding: 10px;
     box-sizing: border-box;
+    border-radius: 8px;
+    /* min-height: 30px; */
 }
 
 .btn-border-trans{
@@ -15,6 +24,8 @@
     cursor: pointer;
     padding: 10px;
     box-sizing: border-box;
+    border-radius: 8px;
+    /* min-height: 30px; */
 }
 
 .btn-parent{

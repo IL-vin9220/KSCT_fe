@@ -8,30 +8,24 @@ async function login(){
         // console.log("username: ", username);
         // console.log("password: ", password);
 
-        let res = await fetch(`${api.API_URL}/api/user/get-user`, {
+        let res = await fetch(`${api.API_URL}/api/user/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify({
                 username,
                 password
             })
         });
 
-        let user = await res.json();
-
-        if (!user) {
+        if (res.status == 200) {
+            location.href = "../../pages/dashboard.html";
+        }
+        else{
             throw new Error("Không xác thực được người dùng");
         }
-
-        localStorage.setItem("user", JSON.stringify(user.data));
-
-        console.log("User:", user);
-
-        location.href = "../../pages/dashboard.html";
-
-        return user;
     } catch (error) {
         console.error(error);
 

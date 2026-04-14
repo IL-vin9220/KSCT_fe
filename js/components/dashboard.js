@@ -1,8 +1,9 @@
 loading();
 
-function loading(){
+async function loading(){
     IncomeExpenseChart();
     CategoryDistributionChart();
+    await totalAmount();
 }
 
 function IncomeExpenseChart() {
@@ -80,4 +81,31 @@ function CategoryDistributionChart() {
         }
     );
 
+}
+
+async function totalAmount(){
+    try{
+        let res = await fetch(`http://localhost:8050/api/wallet/amountWalletActive`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include"
+        });
+
+        if(res.status == 200){
+            let amountList = await res.json();
+
+            let total = amountList.reduce((sum, item) => {
+                return sum + Number(item); // 🔥 ép kiểu
+            }, 0);
+
+            console.log(total);
+
+            document.getElementById("totalIncomeAmount").textContent = total;
+        }
+    }
+    catch(error){
+        console.log("error: ", error);
+    }
 }

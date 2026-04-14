@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiểm Soát Chi Tiêu</title>
-    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components/transaction.css">
-    <link rel="stylesheet" href="../assets/uicons-regular-straight/css/uicons-regular-straight.css">
 </head>
 <body>
     <div class="container">
@@ -16,15 +13,34 @@
                     <h1>Danh Sách Giao Dịch</h1>
                 </div>
                 <div class="topbar-right">
-                    <!-- <div class="date-range">
-                        <div class="month">This Month</div>
-                        <div class="year">This Year</div>
-                    </div> -->
                     <div class="noti-bell">
-                        <div class="icon bell">
+                        <div class="icon icon-rectangle bell">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell size-5 text-muted-foreground" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
                         </div>
                         <div class="noti-bell-dot"></div>
+                    </div>
+                    <div class="add-transaction btn" id="btn_addNewTransaction" onclick="addNewTransaction()">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus size-5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </div>
+                        <div class="text">Thêm Giao Dịch</div>
+                    </div>
+                    <div class="dropdown-wrapper">
+                        <div class="icon icon-rectangle dropdown-trigger"><i class="fi fi-rs-menu-dots-vertical"></i></div>
+                        <div class="dropdown-menu">
+                            <div class="export-file dropdown-item">
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download size-5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                </div>
+                                <div class="text">Xuất File</div>
+                            </div>
+                            <div class="import-file dropdown-item">
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload size-5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                </div>
+                                <div class="text">Nhập File</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="user">
                         <div class="name">Dung Nguyen</div>
@@ -33,10 +49,9 @@
                     </div>
                 </div>
             </header>
-
             <div class="main-content">
                 <div class="main-content-header">
-                    <div class="main-content-left" style="opacity: 0;">
+                    <div class="main-content-header-top">
                         <div class="list-filters">
                             <div class="all active">Tất cả</div>
                             <div class="today">Hôm nay</div>
@@ -49,175 +64,171 @@
                             </div>
                         </div>
                     </div>
-                    <div class="main-content-right">
-                        <div class="export-file btn-trans">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download size-5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <div class="main-content-header-mid">
+                        <div class="content-header-mid-left">
+                            <div class="input-wrapper">
+                                <input type="text" class="input-search" id="inputSearch">
+                                <div class="icon search">
+                                    <i class="fi fi-rs-search"></i>
+                                </div>
                             </div>
-                            <div class="text">Xuất File</div>
                         </div>
-                        <div class="import-file btn-trans">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload size-5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <div class="content-header-mid-right">
+                            <div class="btn-border-trans">Ngày Tạo</div>
+                            <div class="category btn-border-trans">
+                                <span>Danh Mục</span>
+                                <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
                             </div>
-                            <div class="text">Nhập File</div>
-                        </div>
-                        <div class="add-transaction btn" id="btn_addNewTransaction" onclick="addNewTransaction()">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus size-5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            <div class="category btn-border-trans">
+                                <span>Loại Giao Dịch</span>
+                                <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
                             </div>
-                            <div class="text">Thêm Giao Dịch</div>
+                            <div class="category btn-border-trans">
+                                <div class="icon"><i class="fi fi-rs-filter"></i></div>
+                                <span>Bộ Lọc Khác</span>
+                            </div>
+                            <div class="save-filter btn btn-border-trans">Lưu Bộ Lọc</div>
                         </div>
+                    </div>
+                    <div class="main-content-header-bottom" id="filterConditions">
+                        <div class="item-condition">Ngày tạo: 05/04/2026</div>
+                        <div class="item-condition">Thời điểm: Buổi sáng</div>
                     </div>
                 </div>
                 <div class="list-transaction">
                     <div class="table">
                         <div class="table-header">
-                            <div class="tb-header-left">
-                                <div class="input-wrapper">
-                                    <input type="text" class="input-search" id="inputSearch">
-                                    <div class="icon search">
-                                        <i class="fi fi-rs-search"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tb-header-right" style="opacity: 0;">
-                                <div class="list-items btn-parent">
-                                    <div class="create-date btn-child">Ngày Tạo</div>
-                                    <div class="category btn-child">
-                                        <span>Danh Mục</span>
-                                        <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
-                                    </div>
-                                    <div class="transaction-type btn-child">
-                                        <span>Loại Giao Dịch</span>
-                                        <div class="icon"><i class="fi fi-rs-caret-down"></i></div>
-                                    </div>
-                                    <div class="other btn-child">
-                                        <div class="icon"><i class="fi fi-rs-filter"></i></div>
-                                        <span>Bộ Lọc Khác</span>
-                                    </div>
-                                </div>
-                                <div class="save-filter btn-border-trans">Lưu Bộ Lọc</div>
-                            </div>
+                            <div class="icon archive" title="Lưu trữ giao dịch"><i class="fi fi-rs-folder-download"></i></div>
+                            <div class="icon cancel" title="Hủy giao dịch"><i class="fi fi-rs-rectangle-xmark"></i></div>
+                            <div class="icon delete" title="xóa giao dịch"><i class="fi fi-rs-trash"></i></div>
+                            <div class="icon view-archive" title="xem lưu trữ"><i class="fi fi-rs-box"></i></div>
                         </div>
                         <div class="table-content">
-                            <div class="tb-row tb-content-head">
-                                <input type="checkbox" name="" id="ckb" class="ckb">
+                            <div class="tb-row setting tb-content-head">
+                                <div class="wrap-function">
+                                    <div class="icon more-show"><i class="fi fi-rs-tool-box"></i></div>
+                                    <input type="checkbox" class="ckb" name="ckb">
+                                </div>
                                 <div class="stt">STT</div>
                                 <div class="code">Mã Giao Dịch</div>
-                                <div class="name">Tên Giao Dịch</div>
                                 <div class="amount">Số Tiền</div>
                                 <div class="date">Ngày Ghi Nhận</div>
                                 <div class="time">Thời Điểm</div>
-                                <div class="type">Loại Giao Dịch</div>
+                                <div class="actions">Hành Động</div>
                             </div>
                             <div class="tb-content-main">
                                 <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
+                                    <div class="tb-row setting parent">
+                                        <div class="wrap-function">
+                                            <div class="icon detail"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                            <input type="checkbox" class="ckb" name="ckb">
+                                        </div>
+                                        <div class="stt">1</div>
+                                        <div class="code">PMar2026121</div>
+                                        <div class="amount">1000000</div>
+                                        <div class="date">22/03/2026</div>
+                                        <div class="time">Buổi Sáng</div>
+                                        <div class="actions">
+                                            <div class="icon edit" title="Chỉnh sửa"><i class="fi fi-rs-pencil"></i></div>
+                                            <div class="icon archive" title="Lưu trữ giao dịch"><i class="fi fi-rs-folder-download"></i></div>
+                                            <div class="icon cancel" title="Hủy giao dịch"><i class="fi fi-rs-rectangle-xmark"></i></div>
+                                            <div class="icon delete" title="xóa giao dịch"><i class="fi fi-rs-trash"></i></div>
+                                            <div class="icon view-archive" title="xem lưu trữ"><i class="fi fi-rs-box"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="child">
+                                        <div class="tb-row setting child-head">
+                                            <div class="wrap-function">
+                                                <div class="icon detail disable"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                                <input type="checkbox" class="ckb" name="ckb">
+                                            </div>
+                                            <div class="stt">STT</div>
+                                            <div class="code">Mã Giao Dịch Con</div>
+                                            <div class="name">Tên Giao Dịch Con</div>
+                                            <div class="amount">Số Tiền</div>
+                                            <div class="category">Danh Mục</div>
+                                            <div class="actions">Hành Động</div>
+                                        </div>
+                                        <div class="tb-row setting child-content">
+                                            <div class="wrap-function">
+                                                <div class="icon detail disable"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                                <input type="checkbox" class="ckb" name="ckb">
+                                            </div>
+                                            <div class="stt">1</div>
+                                            <div class="code">PMar2026121</div>
+                                            <div class="name">Coca</div>
+                                            <div class="amount expense">-200000</div>
+                                            <div class="category"><div class="sub-category">Ăn Vặt</div></div>
+                                            <div class="actions">
+                                                <div class="icon edit" title="Chỉnh sửa"><i class="fi fi-rs-pencil"></i></div>
+                                                <div class="icon archive" title="Lưu trữ giao dịch"><i class="fi fi-rs-folder-download"></i></div>
+                                                <div class="icon cancel" title="Hủy giao dịch"><i class="fi fi-rs-rectangle-xmark"></i></div>
+                                                <div class="icon delete" title="xóa giao dịch"><i class="fi fi-rs-trash"></i></div>
+                                                <div class="icon view-archive" title="xem lưu trữ"><i class="fi fi-rs-box"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
+                                    <div class="tb-row setting parent">
+                                        <div class="wrap-function">
+                                            <div class="icon detail"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                            <input type="checkbox" class="ckb" name="ckb">
+                                        </div>
+                                        <div class="stt">1</div>
+                                        <div class="code">PMar2026121</div>
+                                        <div class="amount">1000000</div>
+                                        <div class="date">22/03/2026</div>
+                                        <div class="time">Buổi Sáng</div>
+                                        <div class="actions">
+                                            <div class="icon edit" title="Chỉnh sửa"><i class="fi fi-rs-pencil"></i></div>
+                                            <div class="icon archive" title="Lưu trữ giao dịch"><i class="fi fi-rs-folder-download"></i></div>
+                                            <div class="icon cancel" title="Hủy giao dịch"><i class="fi fi-rs-rectangle-xmark"></i></div>
+                                            <div class="icon delete" title="xóa giao dịch"><i class="fi fi-rs-trash"></i></div>
+                                            <div class="icon view-archive" title="xem lưu trữ"><i class="fi fi-rs-box"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="child">
+                                        <div class="tb-row setting child-head">
+                                            <div class="wrap-function">
+                                                <div class="icon detail disable"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                                <input type="checkbox" class="ckb" name="ckb">
+                                            </div>
+                                            <div class="stt">STT</div>
+                                            <div class="code">Mã Giao Dịch Con</div>
+                                            <div class="name">Tên Giao Dịch Con</div>
+                                            <div class="amount">Số Tiền</div>
+                                            <div class="category">Danh Mục</div>
+                                            <div class="actions">Hành Động</div>
+                                        </div>
+                                        <div class="tb-row setting child-content">
+                                            <div class="wrap-function">
+                                                <div class="icon detail disable"><i class="fi fi-rs-angle-double-small-right"></i></div>
+                                                <input type="checkbox" class="ckb" name="ckb">
+                                            </div>
+                                            <div class="stt">1</div>
+                                            <div class="code">PMar2026121</div>
+                                            <div class="name">Coca</div>
+                                            <div class="amount income">+200000</div>
+                                            <div class="category"><div class="sub-category">Ăn Vặt</div></div>
+                                            <div class="actions">
+                                                <div class="icon edit" title="Chỉnh sửa"><i class="fi fi-rs-pencil"></i></div>
+                                                <div class="icon archive" title="Lưu trữ giao dịch"><i class="fi fi-rs-folder-download"></i></div>
+                                                <div class="icon cancel" title="Hủy giao dịch"><i class="fi fi-rs-rectangle-xmark"></i></div>
+                                                <div class="icon delete" title="xóa giao dịch"><i class="fi fi-rs-trash"></i></div>
+                                                <div class="icon view-archive" title="xem lưu trữ"><i class="fi fi-rs-box"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">1</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Đồ Mới</div>
-                                    <div class="amount expense">-1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type expense">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <input type="checkbox" name="" id="ckb" class="ckb">
-                                    <div class="stt">2</div>
-                                    <div class="code">PMar2026121</div>
-                                    <div class="name">Tiền Lương</div>
-                                    <div class="amount income">+1000000</div>
-                                    <div class="date">22/03/2026</div>
-                                    <div class="time">Buổi Sáng</div>
-                                    <div class="type income">Thu Nhập</div>
-                                </div> -->
                             </div>
                         </div>
                         <div class="table-footer">
                             <div class="tb-footer-left">
-                                <p>Tổng số: </p>
-                                <span class="total-record" id="totalRecord">1000 bản ghi</span>
+                                <div class="number-record">
+                                    <p>Tổng số: </p>
+                                    <span class="total-record" id="totalRecord">1000 bản ghi</span>
+                                </div>
                             </div>
                             <div class="tb-footer-right"></div>
                         </div>

@@ -7,8 +7,7 @@
 @import url('./base/icon.css');
 @import url('./base/scrollbar.css');
 @import url('./base/form.css');
-
-@import url('./components/dashboard.css');
+@import url('./base/dropdown.css');
 
 *{
     margin: 0;
