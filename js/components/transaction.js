@@ -1,6 +1,6 @@
 // ----------------------logic event----------------------
 
-function addNewTransaction(){
+function addNewTransaction(type){
     let container = document.querySelector(".container");
 
     if(document.getElementById("addNewTransaction")){
@@ -8,12 +8,14 @@ function addNewTransaction(){
         else{document.getElementById("addNewTransaction").classList.add("active"); return;}
     }
 
+    let name = type=="new"?"Thêm Giao Dịch":"Sửa Giao Dịch";
+
 
     let addNewTransactionDialog = `
         <div class="form add-new active" id="addNewTransaction">
             <div class="dialog">
                 <div class="dialog-header">
-                    <div class="dialog-header-name">Thêm Giao Dịch</div>
+                    <div class="dialog-header-name">${name}</div>
                     <div class="icon close-form" onclick = "hideAddNewTransactionDialog()"><i class="fi fi-rs-cross-small"></i></div>
                 </div>
                 <div class="dialog-content">
@@ -47,7 +49,7 @@ function addNewTransaction(){
                     </div>
                 </div>
                 <div class="dialog-footer">
-                    <div class="btn save" id="saveTransaction" onclick = "saveTransaction()">Lưu</div>
+                    <div class="btn save" id="saveTransaction" onclick = "activeRow()">Lưu</div>
                     <div class="btn close" id="closeForm" onclick = "closeAddNewTransactionDialog()">Đóng</div>
                 </div>
             </div>
@@ -65,6 +67,40 @@ function closeAddNewTransactionDialog(){
     let container = document.querySelector(".container");
     let transaction = document.getElementById("addNewTransaction");
     container.removeChild(transaction);
+}
+
+function active(id){
+
+    let icon = document.getElementById(id);
+
+    icon.classList.toggle("active");
+    icon.classList.toggle("inactive");
+}
+
+function activeRow(){
+    closeAddNewTransactionDialog();
+    document.getElementById("none").style.display = "block";
+}
+
+function editTrans(){
+    addNewTransaction('new');
+    document.getElementById("addNewTransaction").querySelector("#transactionName").value= "Ăn Tối";
+    document.getElementById("addNewTransaction").querySelector("#transactionAmount").value= "30,000";
+    document.getElementById("addNewTransaction").querySelector("#transactionTime").value= "Buổi Tối";
+    document.getElementById("addNewTransaction").querySelector("#transactionDate").value= "16/04/2026";
+    document.getElementById("addNewTransaction").querySelector("#transactionPlace").value= "";
+    document.getElementById("addNewTransaction").querySelector("#textArea").value="";
+
+    document.getElementById("saveTransaction").onclick = ()=>{editTrans2()};
+}
+
+function editTrans2(){
+    closeAddNewTransactionDialog();
+    document.getElementById("gaxaonam").textContent = "Cơm Gà Xào Nấm";
+}
+
+function softdelete(id){
+    document.getElementById(id).style.display = "none";
 }
 
 // -------------------------fetch---------------------------

@@ -31,7 +31,7 @@ function menuSidebar(){
             <div class="sidebar-nav-wapper">
                 <ul class="sidebar-nav">
                     <li>
-                        <a href="./dashboard.html" class="nav-item active">
+                        <a href="./dashboard.html" class="nav-item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard size-5" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
                             <span>Tổng Quan</span>
                         </a>
@@ -40,12 +40,6 @@ function menuSidebar(){
                         <a href="./transaction.html" class="nav-item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-right size-5" aria-hidden="true"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg>
                             <span>Giao Dịch</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column size-5" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
-                            <span>Ngân Sách</span>
                         </a>
                     </li>
                     <li>
@@ -85,14 +79,32 @@ function menuSidebar(){
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="nav-item">
+                        <a href="./fundList.html" class="nav-item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-landmark-icon lucide-landmark"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>
                             <span>Quỹ Giao Dịch</span>
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="" class="nav-item">
+                                <a href="./fundList.html" class="nav-item">
                                     <span>Danh Sách Quỹ</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="nav-item">
+                                    <span>Lịch Sử Giao Dịch</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./fundList.html" class="nav-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-landmark-icon lucide-landmark"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>
+                            <span>Ngân Sách</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="./fundList.html" class="nav-item">
+                                    <span>Quản Lý Ngân Sách</span>
                                 </a>
                             </li>
                             <li>
@@ -136,7 +148,7 @@ function menuSidebar(){
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 68%"></div>
                 </div>
-                <p class="progress-text">2.000.000 / 5.000.000</p>
+                <p class="progress-text">466.000 / 20.000.000</p>
             </div>
         </aside>
     `;

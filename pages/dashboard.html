@@ -47,7 +47,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-value" id="totalIncomeAmount">10.000.000 VND</div>
-                            <div class="card-trend positive">
+                            <div class="card-trend positive" style="display: none;">
                                 <div class="icon up-trend" style="color: var(--success);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4 text-success" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
                                 <p style="color: var(--success);">+12.5%</p>
                             </div>
@@ -61,8 +61,8 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <div class="card-value">10.000.000 VND</div>
-                            <div class="card-trend positive">
+                            <div class="card-value" id="totalExpenseAmount">466.000 VND</div>
+                            <div class="card-trend positive" style="display: none;">
                                 <div class="icon up-trend" style="color: var(--success);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4 text-success" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
                                 <p style="color: var(--success);">+12.5%</p>
                             </div>
@@ -76,8 +76,8 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <div class="card-value">10.000.000 VND</div>
-                            <div class="card-trend positive">
+                            <div class="card-value" id="totalBalanceAmount">10.000.000 VND</div>
+                            <div class="card-trend positive" style="display: none;">
                                 <div class="icon up-trend" style="color: var(--success);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4 text-success" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
                                 <p style="color: var(--success);">+12.5%</p>
                             </div>
@@ -91,8 +91,8 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <div class="card-value">10.000.000 VND</div>
-                            <div class="card-trend positive">
+                            <div class="card-value" id="savePercent">10.000.000 VND</div>
+                            <div class="card-trend positive" style="display: none;">
                                 <div class="icon up-trend" style="color: var(--success);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4 text-success" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
                                 <p style="color: var(--success);">+12.5%</p>
                             </div>
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- Charts Section -->
-                <div class="charts-section">
+                <div class="charts-section" style="display: none;">
                     <div class="chart-card">
                         <div class="card-title">Income vs Expenses</div>
                         <div class="chart-container">
@@ -135,7 +135,7 @@
                         </div>
                         <div class="table-content">
                             <div class="tb-content-head">
-                                <div class="tb-row">
+                                <div class="tb-row setting">
                                     <div class="date">Ngày</div>
                                     <div class="category">Danh mục</div>
                                     <div class="name">Tên</div>
@@ -143,118 +143,69 @@
                                     <div class="type">Loại</div>
                                 </div>
                             </div>
-                            <div class="tb-content-main">
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
+                            <div class="tb-content-main" id="dataRecentTransaction">
+                                <div class="tb-row setting">
+                                    <div class="date">16/04/2026</div>
                                     <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
-                                        <div class="sub-category">Giải trí</div>
+                                        <div class="sub-category">Ăn Uống</div>
+                                    </div>
+                                    <div class="name">Ăn Trưa</div>
+                                    <div class="amount expense">-30,000</div>
+                                    <div class="type expense">Chi tiêu</div>
+                                </div>
+                                <div class="tb-row setting">
+                                    <div class="date">16/04/2026</div>
+                                    <div class="category">
                                         <div class="sub-category">Giải trí</div>
                                     </div>
-                                    <div class="name">Cá</div>
+                                    <div class="name">Gaming</div>
                                     <div class="amount expense">-100,000</div>
                                     <div class="type expense">Chi tiêu</div>
                                 </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
+                                <div class="tb-row setting">
+                                    <div class="date">16/04/2026</div>
                                     <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
+                                        <div class="sub-category">Ăn Uống</div>
                                     </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount income">+100,000</div>
-                                    <div class="type income">Thu nhập</div>
+                                    <div class="name">Mì Cay</div>
+                                    <div class="amount expense">-50,000</div>
+                                    <div class="type expense">Chi tiêu</div>
                                 </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
+                                <div class="tb-row setting">
+                                    <div class="date">16/04/2026</div>
                                     <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
+                                        <div class="sub-category">Ăn Uống</div>
                                     </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
+                                    <div class="name">Bún Chả</div>
+                                    <div class="amount expense">-45,000</div>
+                                    <div class="type expense">Chi tiêu</div>
                                 </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
+                                <div class="tb-row setting">
+                                    <div class="date">16/04/2026</div>
                                     <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
                                         <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
                                     </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
+                                    <div class="name">Xăng Xe</div>
+                                    <div class="amount expense">-70,000</div>
+                                    <div class="type expense">Chi tiêu</div>
                                 </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
+                                <div class="tb-row setting">
+                                    <div class="date">16/04/2026</div>
                                     <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
+                                        <div class="sub-category">Mua Sắm</div>
                                     </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
+                                    <div class="name">Headphone</div>
+                                    <div class="amount expense">-116,000</div>
+                                    <div class="type expense">Chi tiêu</div>
                                 </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
+                                <div class="tb-row setting">
+                                    <div class="date">16/04/2026</div>
                                     <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
+                                        <div class="sub-category">Đồ Uống</div>
                                     </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
-                                    <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
-                                    </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
-                                    <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
-                                    </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
-                                    <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
-                                    </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
-                                </div>
-                                <div class="tb-row">
-                                    <div class="date">22/03/2025</div>
-                                    <div class="category">
-                                        <div class="sub-category">Đồ ăn</div>
-                                        <div class="sub-category">Đi lại</div>
-                                        <div class="sub-category">Giải trí</div>
-                                    </div>
-                                    <div class="name">Cá</div>
-                                    <div class="amount">100,000</div>
-                                    <div class="type">Chi tiêu</div>
+                                    <div class="name">Trà Sữa</div>
+                                    <div class="amount expense">-55,000</div>
+                                    <div class="type expense">Chi tiêu</div>
                                 </div>
                             </div>
                         </div>
@@ -263,6 +214,6 @@
         </main>
     </div>
     <script src="../js/common/common.js"></script>
-    <script src="../js/components/dashboard.js"></script>
+    <script type = "module" src="../js/components/dashboard.js"></script>
 </body>
 </html>

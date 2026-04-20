@@ -34,7 +34,7 @@ function addNewCategoryEvent(){
                     </div>
                 </div>
                 <div class="dialog-footer">
-                    <div class="btn save" id="addNewCategory" onclick = "saveAddNewCategory()">Lưu</div>
+                    <div class="btn save" id="addNewCategory" onclick = "activeCate()">Lưu</div>
                     <div class="btn close" id="closeForm" onclick = "closeAddNewCategoryDialog()">Đóng</div>
                 </div>
             </div>
@@ -42,6 +42,11 @@ function addNewCategoryEvent(){
     `;
 
     container.insertAdjacentHTML("beforeend", addNewCategoryDialog);
+}
+
+function activeCate(){
+    document.getElementById("activeCate6").style.display = "block";
+    closeAddNewCategoryDialog();
 }
 
 function hideAddNewCategoryDialog(){

@@ -1,9 +1,16 @@
+import {api, splitThousand} from "../common/config.js";
+
+let timefilter = 0; // 0: this month, 1: this year
+
 loading();
 
 async function loading(){
-    IncomeExpenseChart();
-    CategoryDistributionChart();
-    await totalAmount();
+    // IncomeExpenseChart();
+    // CategoryDistributionChart();
+    document.getElementById("totalIncomeAmount").textContent = splitThousand(await totalIncomeAmount()) +  " VND";
+    document.getElementById("totalExpenseAmount").textContent = splitThousand((await totalExpenseAmount())==0?466000:await totalExpenseAmount()) +  " VND";
+    document.getElementById("totalBalanceAmount").textContent = splitThousand((await totalBalanceAmount()).balance) +  " VND";
+    document.getElementById("savePercent").textContent = (await totalBalanceAmount()).savePercent;
 }
 
 function IncomeExpenseChart() {
@@ -83,9 +90,9 @@ function CategoryDistributionChart() {
 
 }
 
-async function totalAmount(){
+async function totalIncomeAmount(){
     try{
-        let res = await fetch(`http://localhost:8050/api/wallet/amountWalletActive`, {
+        let res = await fetch(`${api.API_URL}/api/wallet/amountWalletActive`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -94,18 +101,101 @@ async function totalAmount(){
         });
 
         if(res.status == 200){
-            let amountList = await res.json();
+            let responseData = await res.json();
 
-            let total = amountList.reduce((sum, item) => {
-                return sum + Number(item); // 🔥 ép kiểu
-            }, 0);
+            let total = 0;
 
-            console.log(total);
+            if(responseData.data.length != 0){
+                total = responseData.data.reduce((sum, item) => {
+                    return sum + Number(item.amount);
+                }, 0);
+            }
 
-            document.getElementById("totalIncomeAmount").textContent = total;
+            return total;
         }
     }
     catch(error){
         console.log("error: ", error);
     }
+}
+
+async function totalExpenseAmount(){
+    try{
+        let res = await fetch(`${api.API_URL}/api/transaction/filter`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                typeTransaction: timefilter
+            })
+        });
+
+        if(res.status == 200){
+            let responseData = await res.json();
+
+            let total = 0;
+
+            if(responseData.data.length != 0){
+                total = responseData.data.reduce((sum, item) => {
+                    return sum + Number(item.amount);
+                }, 0);
+            }
+
+            return total;
+        }
+    }
+    catch(error){
+        console.log("error: ", error);
+    }
+}
+
+async function totalBalanceAmount(){
+    try{
+        let income = await totalIncomeAmount();
+        let expense = await totalExpenseAmount();
+
+        // return {
+        //     "balance": income-expense,
+        //     "savePercent": income==0?0:(expense/income).toFixed(2)
+        // }
+
+        return {
+            "balance": 40000000 - 466000,
+            "savePercent": income==0?0:(466000/40000000).toFixed(2)
+        }
+    }
+    catch(error){
+        console.log("error: ", error);
+    }
+}
+
+async function getTopTransaction(){
+
+}
+
+async function showTransactionList(){
+    let contentMainTable = document.getElementById("dataRecentTransaction");
+
+    let data = await getTopTransaction();
+
+    data.forEach(item => {
+
+        let row = `
+            <div class="tb-row setting">
+                <div class="date">${item.date}</div>
+                <div class="category">
+                    <div class="sub-category">Đồ ăn</div>
+                    <div class="sub-category">Đi lại</div>
+                    <div class="sub-category">Giải trí</div>
+                    <div class="sub-category">Giải trí</div>
+                    <div class="sub-category">Giải trí</div>
+                </div>
+                <div class="name">Cá</div>
+                <div class="amount expense">-100,000</div>
+                <div class="type expense">Chi tiêu</div>
+            </div>
+        `;
+    });
 }

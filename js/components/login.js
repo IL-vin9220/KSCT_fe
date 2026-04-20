@@ -22,6 +22,7 @@ async function login(){
 
         if (res.status == 200) {
             location.href = "../../pages/dashboard.html";
+            // console.log(await res.json());
         }
         else{
             throw new Error("Không xác thực được người dùng");
