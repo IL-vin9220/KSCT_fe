@@ -1,0 +1,201 @@
+/* ===== DASHBOARD ROOT ===== */
+.dashboard{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    padding:16px;
+    box-sizing: border-box;
+    height:100%;
+    overflow-y:auto;
+    background-color: var(--muted);
+}
+
+/* ===== GRID ===== */
+.row-4{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+}
+
+.row-2{
+    display:grid;
+    grid-template-columns:1.5fr 1.3fr; /* đúng layout ảnh */
+    gap:16px;
+}
+
+/* ===== CARD ===== */
+.card{
+    background:#fff;
+    border-radius:14px;
+    padding:16px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);
+    display:flex;
+    flex-direction:column;
+}
+
+/* ===== FIX CHART KHÔNG BỊ CO ===== */
+.card canvas{
+    width:100% !important;
+    height:100% !important;
+}
+
+/* chiều cao chuẩn giống ảnh */
+.row-2 .card{
+    height:280px;
+}
+
+/* riêng card top day thì auto */
+.row-2 .card:last-child{
+    height:auto;
+}
+
+/* .row-2.child1 .card{
+    height: 220px;
+    width: auto;
+}
+
+.row-2.child1 .card .expense-wrap{
+    max-width: 400px;
+}
+
+.row-2.child2{
+    height: 200px;
+    display: none;
+} */
+
+/* ===== PIE LAYOUT ===== */
+.expense-wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex:1;
+}
+
+#pie{
+    width:180px !important;
+    height:180px !important;
+}
+
+/* ===== BAR + LINE ===== */
+#bar,
+#line{
+    flex:1;
+}
+
+/* ===== STAT ===== */
+.stat{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.stat-title{
+    font-size:12px;
+    color:#6b7280;
+}
+
+.stat-value{
+    font-weight:700;
+    margin-top:6px;
+}
+
+/* ===== ICON ===== */
+.icon{
+    width:32px;
+    height:32px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* ===== COLORS ===== */
+.green{color:#10b981}
+.red{color:#ef4444}
+.blue{color:#06b6d4}
+.purple{color:#8b5cf6}
+
+.bg-green{background:#d1fae5}
+.bg-red{background:#fee2e2}
+.bg-blue{background:#cffafe}
+.bg-purple{background:#ede9fe}
+
+/* ===== TITLE ===== */
+.card-title{
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+/* ===== LEGEND ===== */
+.legend{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 20px;
+    font-size:13px;
+}
+
+.legend-item{
+    display: flex;
+    align-items: center;
+}
+
+.legend .dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* ===== TOP DAY ===== */
+.item{
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+    padding:10px 0;
+    background-color: var(--muted);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.item+.item{
+    margin-top: 10px;
+}
+
+.item > .amount{
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+
+/* ===== SCROLL ===== */
+.dashboard::-webkit-scrollbar{
+    width:6px;
+}
+.dashboard::-webkit-scrollbar-thumb{
+    background:#d1d5db;
+    border-radius:10px;
+}
+
+.r1{background:#f59e0b}
+.r2{background:#6b7280}
+.r3{background:#fb923c}
+
+.item > .left{
+    display: flex;
+    align-items: center;
+}
+
+.item > .left > .rank{
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item > .left *+*{
+    margin-left: 10px;
+}

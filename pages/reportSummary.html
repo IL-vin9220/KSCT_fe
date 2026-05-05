@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Soát Chi Tiêu</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/reportSummary.css">
+    <link rel="stylesheet" href="../assets/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="icon" href="../assets/KiemSoatChiTieu_logo.ico">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/common/common.js" defer></script>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="dashboard">
+
+<!-- ===== TOP ===== -->
+<div class="row-4">
+
+<div class="card stat">
+<div>
+<div class="stat-title">Tổng Thu Tháng Hiện Tại</div>
+<div class="stat-value green">32.000.000 đ</div>
+</div>
+<div class="icon bg-green">📈</div>
+</div>
+
+<div class="card stat">
+<div>
+<div class="stat-title">Tổng Chi Tháng Hiện Tại</div>
+<div class="stat-value red">7.400.000 đ</div>
+</div>
+<div class="icon bg-red">📉</div>
+</div>
+
+<div class="card stat">
+<div>
+<div class="stat-title">Chi Tiêu Trung Bình Tháng</div>
+<div class="stat-value blue">493.333 đ</div>
+</div>
+<div class="icon bg-blue">💳</div>
+</div>
+
+<div class="card stat">
+<div>
+<div class="stat-title">Tỷ Lệ Tiết Kiệm</div>
+<div class="stat-value purple">77%</div>
+</div>
+<div class="icon bg-purple">⭐</div>
+</div>
+
+</div>
+
+<!-- ===== ROW 2 ===== -->
+<div class="row-2 child1">
+
+<!-- PIE -->
+<div class="card expense-card">
+<div class="card-title">Phân Bổ Chi Tiêu Theo Danh Mục</div>
+
+<div class="expense-wrap">
+<canvas id="pie"></canvas>
+<div class="legend" id="legend"></div>
+</div>
+</div>
+
+<!-- BAR -->
+<div class="card top-card">
+<div class="card-title">Top 5 Danh Mục Chi Tiêu Cao Nhất</div>
+<canvas id="bar"></canvas>
+</div>
+
+</div>
+
+<!-- ===== ROW 3 ===== -->
+<div class="row-2 child2">
+
+<!-- LINE -->
+<div class="card">
+<div class="card-title">Chi Tiêu Hàng Ngày Trong Tháng</div>
+<canvas id="line"></canvas>
+</div>
+
+<!-- TOP DAY -->
+<div class="card">
+
+<div class="top-header">
+<div class="card-title" style="margin-bottom:10px">Ngày Chi Tiêu Cao Nhất</div>
+<!-- <div class="dropdown">Top 3 ▼</div> -->
+</div>
+
+<div class="item">
+<div class="left">
+<div class="rank r1">1</div>
+<div>📅 <span class="date">15/01</span></div>
+</div>
+<div class="amount">2.500.000 đ</div>
+</div>
+
+<div class="item">
+<div class="left">
+<div class="rank r2">2</div>
+<div>📅 <span class="date">14/01</span></div>
+</div>
+<div class="amount">1.250.000 đ</div>
+</div>
+
+<div class="item">
+<div class="left">
+<div class="rank r3">3</div>
+<div>📅 <span class="date">09/01</span></div>
+</div>
+<div class="amount">1.200.000 đ</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+        </div>
+    </div>
+</body>
+<script src="../js/components/reportSummary.js"></script>
+</html>

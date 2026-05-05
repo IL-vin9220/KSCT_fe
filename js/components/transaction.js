@@ -3,70 +3,211 @@
 function addNewTransaction(type){
     let container = document.querySelector(".container");
 
-    if(document.getElementById("addNewTransaction")){
-        if(document.getElementById("addNewTransaction").classList.contains("active")){return;}
-        else{document.getElementById("addNewTransaction").classList.add("active"); return;}
-    }
+    if(!checkExistsForm('addNewTransaction')){
+        let container = document.querySelector(".container");
 
-    let name = type=="new"?"Thêm Giao Dịch":"Sửa Giao Dịch";
+        let name = type=="new"?"Thêm Giao Dịch":"Sửa Giao Dịch";
 
 
-    let addNewTransactionDialog = `
-        <div class="form add-new active" id="addNewTransaction">
-            <div class="dialog">
-                <div class="dialog-header">
-                    <div class="dialog-header-name">${name}</div>
-                    <div class="icon close-form" onclick = "hideAddNewTransactionDialog()"><i class="fi fi-rs-cross-small"></i></div>
-                </div>
-                <div class="dialog-content">
-                    <div class="transaction-name">
-                        <label for="transactionName">Giao Dịch:</label>
-                        <div class="input-wrapper"><input type="text" id="transactionName" class="input"></div>
-                    </div>
-                    <div class="transaction-amount">
-                        <label for="transactionAmount">Số Tiền:</label>
-                        <div class="input-wrapper"><input type="text" class="input" id="transactionAmount"></div>
-                    </div>
-                    <div class="transaction-date-time">
-                        <div class="transaction-time">
-                            <label for="transactionTime">Thời Điểm:</label>
-                            <div class="input-wrapper"><input type="text" class="input" id="transactionTime"></div>
+        let addNewTransactionDialog = `
+            <div class="form add-new active" id="addNewTransaction">
+                <div class="dialog">
+
+                    <div class="dialog-header">
+                        <div>
+                            <div class="dialog-header-name">${name}</div>
+                            <div class="dialog-header-desc">
+                                Điền thông tin chi tiết cho giao dịch của bạn
+                            </div>
                         </div>
-                        <div class="transaction-date">
-                            <label for="transactionDate">Ngày Giao Dịch:</label>
-                            <div class="input-wrapper"><input type="text" class="input" id="transactionDate"></div>
+
+                        <div class="icon" id="closeForm">✕</div>
+                    </div>
+
+                    <div class="dialog-content">
+
+                        <!-- loại giao dịch -->
+                        <div class="transaction-type">
+                            <button
+                                class="transaction-tab expense active"
+                                id="expenseTab"
+                                type="button"
+                            >
+                                Chi Tiêu
+                            </button>
+
+                            <button
+                                class="transaction-tab income"
+                                id="incomeTab"
+                                type="button"
+                            >
+                                Thu Nhập
+                            </button>
+                        </div>
+
+                        <!-- tên giao dịch -->
+                        <div class="form-group">
+                            <label>Tên giao dịch</label>
+                            <div class="input-wrapper">
+                                <input
+                                    type="text"
+                                    class="input"
+                                    placeholder="VD: Mua sắm cuối tuần"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- số tiền giao dịch -->
+                        <div class="form-group">
+                        <label for="transactionAmount">Số tiền Ngân Sách</label>
+                        <div class="input-wrapper amount-wrapper">
+                            <input
+                                type="text"
+                                id="transactionAmount"
+                                class="input"
+                                placeholder="0"
+                            />
+                            <span class="currency">VND</span>
                         </div>
                     </div>
-                    <div class="transaction-place">
-                        <label for="transactionPlace">Nơi Thực Hiện:</label>
-                        <div class="input-wrapper"><input type="text" class="input" id="transactionPlace"></div>
-                    </div>
-                    <div class="transaction-description">
-                        <label for="textArea">Ghi Chú:</label>
-                        <div class="input-wrapper">
-                            <textarea class="text-area" id="textArea"></textarea>
+
+                        <!-- ngày + thời điểm -->
+                        <div class="form-row">
+
+                            <div class="form-group half">
+                                <label>Ngày giao dịch</label>
+                                <div class="input-wrapper">
+                                    <input
+                                        type="date"
+                                        class="input"
+                                        id="transactionDate"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="form-group half">
+                                <label>Thời điểm</label>
+                                <div class="input-wrapper">
+                                    <select class="select">
+                                        <option>Sáng</option>
+                                        <option>Trưa</option>
+                                        <option>Chiều</option>
+                                        <option>Tối</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
+
+                        <!-- ví -->
+                        <div class="form-group">
+                            <label>Ví / Tài khoản</label>
+                            <div class="input-wrapper">
+                                <select class="select">
+                                    <option>Chọn ví tiền</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- nơi thực hiện -->
+                        <div class="form-group">
+                            <label>Nơi thực hiện</label>
+                            <div class="input-wrapper">
+                                <input
+                                    type="text"
+                                    class="input"
+                                    placeholder="VD: Siêu thị, Quán cafe..."
+                                />
+                            </div>
+                        </div>
+
+                        <!-- ghi chú -->
+                        <div class="form-group">
+                            <label>Ghi chú</label>
+                            <div class="input-wrapper">
+                                <textarea
+                                    class="text-area"
+                                    placeholder="Nhập ghi chú..."
+                                ></textarea>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-                <div class="dialog-footer">
-                    <div class="btn save" id="saveTransaction" onclick = "activeRow()">Lưu</div>
-                    <div class="btn close" id="closeForm" onclick = "closeAddNewTransactionDialog()">Đóng</div>
+
+                    <div class="dialog-footer">
+                        <button class="btn btn-cancel" id="cancelForm" type="button">Hủy</button>
+
+                        <button class="btn btn-save" id="saveTransaction" type="button">Tạo Giao Dịch</button>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    `;
+        `;
 
-    container.insertAdjacentHTML("beforeend", addNewTransactionDialog);
+        container.insertAdjacentHTML("beforeend", addNewTransactionDialog);
+
+        document.getElementById('closeForm').addEventListener('click', () => {
+            hideForm('addNewTransaction');
+        });
+        
+        document.getElementById('cancelForm').addEventListener('click', () => {
+            closeForm('addNewTransaction');
+        });
+
+        document.getElementById('saveTransaction').addEventListener('click', () => {
+            closeForm('addNewTransaction');
+        });
+
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('transactionDate').value = today;
+
+        const expenseTab = document.getElementById("expenseTab");
+        const incomeTab = document.getElementById("incomeTab");
+
+        expenseTab.addEventListener("click", () => {
+            expenseTab.classList.add("active");
+            incomeTab.classList.remove("active");
+        });
+
+        incomeTab.addEventListener("click", () => {
+            incomeTab.classList.add("active");
+            expenseTab.classList.remove("active");
+        });
+    }
+    else{
+        showForm('addNewTransaction');
+    }
 }
 
-function hideAddNewTransactionDialog(){
-    document.getElementById("addNewTransaction").classList.remove("active");
+function hideForm(id){
+    if(checkExistsForm(id)){
+        // remote classname active
+        document.getElementById(id).classList.remove("active");
+    }
 }
 
-function closeAddNewTransactionDialog(){
-    let container = document.querySelector(".container");
-    let transaction = document.getElementById("addNewTransaction");
-    container.removeChild(transaction);
+function showForm(id){
+    if(checkExistsForm(id)){
+        // add classname active
+        document.getElementById(id).classList.add("active");
+    }
+}
+
+function closeForm(id){
+    if(checkExistsForm(id)){
+        // lấy ra cha
+        let form = document.getElementById(id);
+        let parent = form.parentNode;
+
+        parent.removeChild(form);
+    }
+}
+
+function checkExistsForm(id){
+    if(document.getElementById(id)){
+        return true;
+    }
+    return false;
 }
 
 function active(id){

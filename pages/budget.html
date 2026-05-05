@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Soát Chi Tiêu</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/budget.css">
+    <link rel="stylesheet" href="../assets/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="icon" href="../assets/KiemSoatChiTieu_logo.ico">
+</head>
+<script src="../js/common/common.js" defer></script>
+<body>
+    <div class="container" id="container">
+        <div class="content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Danh Sách Danh Mục</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="noti-bell">
+                        <div class="icon icon-rectangle bell">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell size-5 text-muted-foreground" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+                        </div>
+                        <div class="noti-bell-dot"></div>
+                    </div>
+                    <div class="add-transaction btn" id="btn_addNewBudget">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus size-5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </div>
+                        <div class="text">Thêm Ngân Sách</div>
+                    </div>
+                    <div class="user">
+                        <div class="name">Dung Nguyen</div>
+                        <div class="avatar">
+                            <img src="../assets/img/Background.png" alt="User Avatar" width="30px" height="30px">
+                    </div>
+                </div>
+            </header>
+            <div class="main-content">
+                <div class="budgets">
+                    <div class="filter-area">
+                        <div class="area-r1">
+                            <div class="toolbar-left">
+                                <div class="input-wrapper">
+                                    <input type="text" class="input" id="input">
+                                    <div class="icon"><i class="fi fi-rs-search"></i></div>
+                                </div>
+                            </div>
+                            <div class="toolbar-right">
+                                <div class="btn filter-other">Ngày Tạo</div>
+                                <div class="btn filter-other">Tình Trạng</div>
+                            </div>
+                        </div>
+                        <div class="area-r2">
+                            <div class="choose-date">
+                                <div class="input-wrapper"><input type="text" class="input date-start"></div>
+                                <p> - </p>
+                                <div class="input-wrapper"><input type="text" class="input date-end"></div>
+                            </div>
+                            <select name="" id="" class="choose-status">
+                                <option value="on-track">Ổn Định</option>
+                                <option value="need-atention">Cần Chú Ý</option>
+                                <option value="over-budget">Vượt Ngân Sách</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="budget-list">
+                        <div class="budget-card" data-percent="75">
+                            <div class="card-header">
+                                <h3>Food & Groceries</h3>
+                                <button class="edit-btn">✎</button>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="progress-box">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                                        <circle class="progress-fill" cx="50" cy="50" r="45"></circle>
+                                    </svg>
+
+                                    <div class="progress-content">
+                                        <div class="small progress-percent">75% spent</div>
+                                        <div class="price">$487.50</div>
+                                    </div>
+                                </div>
+
+                                <div class="info">
+                                    <div class="title">Left</div>
+
+                                    <div class="amount">
+                                        <div class="main">$162.50</div>
+                                        <div class="sub">/$650</div>
+                                    </div>
+
+                                    <div class="status">
+                                        <div class="status-icon">✓</div>
+                                        <span>on track</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="budget-card" data-percent="48">
+                            <div class="card-header">
+                                <h3>Shopping</h3>
+                                <button class="edit-btn">✎</button>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="progress-box">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                                        <circle class="progress-fill" cx="50" cy="50" r="45"></circle>
+                                    </svg>
+
+                                    <div class="progress-content">
+                                        <div class="small progress-percent">48% spent</div>
+                                        <div class="price">$240.00</div>
+                                    </div>
+                                </div>
+
+                                <div class="info">
+                                    <div class="title">Left</div>
+
+                                    <div class="amount">
+                                        <div class="main">$260.00</div>
+                                        <div class="sub">/$500</div>
+                                    </div>
+
+                                    <div class="status">
+                                        <div class="status-icon">✓</div>
+                                        <span>safe</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="budget-month">
+                    <!-- Monthly budget -->
+                    <div class="monthly-budget" data-percent="45">
+
+                        <div class="monthly-header">
+                            <div class="monthly-title">
+                                <h3>Ngân Sách Tháng</h3>
+                                <div class="monthly-total">$5,950.00</div>
+                            </div>
+
+                            <!-- <button class="menu-btn">⋯</button> -->
+                            <div class="countdown-date">
+                                <div class="hourglass-anim">
+                                    <i class="fi fi-rs-hourglass-start icon-start"></i>
+                                    <i class="fi fi-rs-hourglass-end icon-end"></i>
+                                </div>
+                                <p id="countDownDateInMonth">22 Ngày</p>
+                            </div>
+                        </div>
+
+                        <div class="month-status">
+                            <div class="month-status-icon">✓</div>
+                            <span>Ổn Định</span>
+                        </div>
+
+                        <div class="arc-wrapper">
+                            <div class="arc-box">
+
+                                <div class="arc-label">Còn Lại 55%</div>
+
+                                <svg viewBox="0 0 200 120">
+                                    <path
+                                        class="arc-bg"
+                                        d="M30 100 A70 70 0 0 1 170 100"
+                                    />
+                                    <path
+                                        class="arc-fill"
+                                        d="M30 100 A70 70 0 0 1 170 100"
+                                    />
+                                </svg>
+
+                                <div class="arc-content">
+                                    <div class="arc-percent">45% spent</div>
+                                    <div class="arc-value">$2,693.00</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Expenses -->
+                    <div class="expenses-card">
+
+                        <div class="expenses-header">
+                            <h3>Khoản Phí Nhiều Nhất</h3>
+
+                            <select class="month-select">
+                                <option value="this-month">Tháng Này</option>
+                                <option value="this-year">Năm Nay</option>
+                            </select>
+                        </div>
+
+                        <div class="expense-list"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module" src="../js/components/budget.js"></script>
+</html>
