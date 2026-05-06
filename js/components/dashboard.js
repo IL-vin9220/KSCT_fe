@@ -121,27 +121,20 @@ async function totalIncomeAmount(){
 
 async function totalExpenseAmount(){
     try{
-        let res = await fetch(`${api.API_URL}/api/transaction/filter`, {
-            method: "POST",
+        let res = await fetch(`${api.API_URL}/api/category/total-amount`, {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             },
             credentials: "include",
-            body: JSON.stringify({
-                typeTransaction: timefilter
-            })
         });
 
         if(res.status == 200){
             let responseData = await res.json();
 
-            let total = 0;
+            let total = responseData.data;
 
-            if(responseData.data.length != 0){
-                total = responseData.data.reduce((sum, item) => {
-                    return sum + Number(item.amount);
-                }, 0);
-            }
+            console.log("Total expense: ", total);
 
             return total;
         }
