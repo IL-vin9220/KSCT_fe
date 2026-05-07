@@ -11,6 +11,7 @@ async function loading(){
     document.getElementById("totalExpenseAmount").textContent = splitThousand((await totalExpenseAmount())==0?466000:await totalExpenseAmount()) +  " VND";
     document.getElementById("totalBalanceAmount").textContent = splitThousand((await totalBalanceAmount()).balance) +  " VND";
     document.getElementById("savePercent").textContent = (await totalBalanceAmount()).savePercent;
+    await showTableTop10Trans();
 }
 
 function IncomeExpenseChart() {
@@ -132,9 +133,8 @@ async function totalExpenseAmount(){
         if(res.status == 200){
             let responseData = await res.json();
 
-            let total = responseData.data;
+            let total = parseInt(responseData.data.totalAmount);
 
-            console.log("Total expense: ", total);
 
             return total;
         }
@@ -155,8 +155,8 @@ async function totalBalanceAmount(){
         // }
 
         return {
-            "balance": 40000000 - 466000,
-            "savePercent": income==0?0:(466000/40000000).toFixed(2)
+            "balance": income - expense,
+            "savePercent": income==0?0:(expense/income).toFixed(2)
         }
     }
     catch(error){
@@ -165,7 +165,52 @@ async function totalBalanceAmount(){
 }
 
 async function getTopTransaction(){
+    try{
+        let res = await fetch(`${api.API_URL}/api/transaction/top10-transaction`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+        });
 
+        if(res.status == 200){
+            let responseData = await res.json();
+            console.log(responseData.data);
+            return responseData.data;
+        }
+    }
+    catch(error){
+        console.log("error: ", error);
+    }
+}
+
+async function showTableTop10Trans(){
+    try{
+        let listTop10Transaction = await getTopTransaction();
+
+        //parent
+        let parent = document.getElementById('dataRecentTransaction');
+
+        listTop10Transaction.forEach(item => {
+            let type = item.type==0?"expense": item.type==1?"income": "";
+            let innerHTML = `
+                <div class="tb-row setting">
+                    <div class="date">${item.date}</div>
+                    <div class="category">
+                        <div class="sub-category">${item.categoryName}</div>
+                    </div>
+                    <div class="name">${item.transactionName}</div>
+                    <div class="amount ${type}">${item.type==0?"-": item.type==1?"+": ""}${splitThousand(parseInt(item.transactionAmount))}</div>
+                    <div class="type ${type}">${item.type==0?"Chi Tiêu": item.type==1?"Thu Nhập": ""}</div>
+                </div>
+            `;
+            parent.insertAdjacentHTML("beforeend", innerHTML);
+        });
+    }
+    catch(error){
+        console.error(error);
+    }
 }
 
 async function showTransactionList(){

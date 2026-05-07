@@ -203,7 +203,7 @@ function addNewBudget(){
                     </div>
 
                     <div class="form-group">
-                        <label for="cateogry">Danh Mục</label>
+                        <label for="cateogry">Đối Tượng</label>
                         <div class="input-wrapper">
                             <input
                                 type="text"
