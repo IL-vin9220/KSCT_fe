@@ -1,0 +1,24 @@
+@startuml
+title Class Diagram - Xóa Danh Mục
+
+class CategoryController {
+    +deleteCategory(id)
+}
+
+class CategoryService {
+    +softDelete(id)
+}
+
+class CategoryRepository {
+    +updateDeletedAt(id)
+}
+
+class Category {
+    +deletedAt
+}
+
+CategoryController --> CategoryService
+CategoryService --> CategoryRepository
+CategoryRepository --> Category
+
+@enduml

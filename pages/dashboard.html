@@ -22,11 +22,134 @@
                         </div>
                         <div class="noti-bell-dot"></div>
                     </div>
-                    <div class="user">
-                        <div class="name">Dung Nguyen</div>
-                        <div class="avatar">
-                            <img src="../assets/img/Background.png" alt="User Avatar" width="30px" height="30px">
-                    </div>
+                    <div class="user" style="
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+">
+
+    <!-- Tên -->
+    <div class="name" style="
+        font-size: 14px;
+        font-weight: 600;
+        color: #222;
+    ">
+        Dung Nguyen
+    </div>
+
+    <!-- Avatar -->
+    <div class="avatar" 
+         onclick="toggleUserMenu()" 
+         style="
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+            flex-shrink: 0;
+            cursor: pointer;
+         ">
+        <img 
+            src="../assets/img/Background.png" 
+            alt="User Avatar"
+            style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            "
+        >
+    </div>
+
+    <!-- Popup Dropdown -->
+    <div id="userPopup" style="
+        display: none;
+        position: absolute;
+        top: 58px;
+        right: 0;
+        width: 240px;
+        background: #ffffff;
+        border-radius: 14px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        overflow: hidden;
+        z-index: 999;
+        border: 1px solid #f1f1f1;
+    ">
+
+        <!-- Header -->
+        <div style="
+            padding: 16px;
+            border-bottom: 1px solid #f3f4f6;
+            background: #fafafa;
+        ">
+            <div style="
+                font-size: 14px;
+                font-weight: 600;
+                color: #111827;
+            ">
+                Dung Nguyen
+            </div>
+            <div style="
+                font-size: 12px;
+                color: #6b7280;
+                margin-top: 4px;
+            ">
+                Tài khoản cá nhân
+            </div>
+        </div>
+
+        <!-- Item 1 -->
+        <div style="
+            padding: 14px 18px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        "
+        onmouseover="this.style.background='#f9fafb'"
+        onmouseout="this.style.background='white'">
+            <a href="./userInfor.html" style="color: black; text-decoration: none;">Thông tin tài khoản</a>
+        </div>
+
+        <!-- Item 3 -->
+        <div style="
+            padding: 14px 18px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #dc2626;
+            border-top: 1px solid #f3f4f6;
+            transition: all 0.2s ease;
+        "
+        onmouseover="this.style.background='#fef2f2'"
+        onmouseout="this.style.background='white'">
+            Đăng Xuất
+        </div>
+
+    </div>
+</div>
+
+<script>
+function toggleUserMenu() {
+    const popup = document.getElementById("userPopup");
+
+    if (popup.style.display === "block") {
+        popup.style.display = "none";
+    } else {
+        popup.style.display = "block";
+    }
+}
+
+document.addEventListener("click", function(e) {
+    const userBox = document.querySelector(".user");
+    const popup = document.getElementById("userPopup");
+
+    if (!userBox.contains(e.target)) {
+        popup.style.display = "none";
+    }
+});
+</script>
                 </div>
             </header>
 

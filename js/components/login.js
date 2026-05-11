@@ -1,4 +1,4 @@
-import {api} from "../common/config.js"
+import {api} from "../common/config.js";
 
 async function login(){
     try {

@@ -269,7 +269,7 @@ function addNewBudget(){
 
                 <div class="dialog-footer">
                     <button class="btn btn-cancel" id="cancelForm">Hủy</button>
-                    <button class="btn btn-save" id="saveBudget">Lưu giao dịch</button>
+                    <button class="btn btn-save" id="saveBudget">Thêm Ngân Sách</button>
                 </div>
 
             </div>

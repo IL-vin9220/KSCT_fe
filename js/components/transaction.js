@@ -1,7 +1,78 @@
+import {api} from "../common/config.js";
+
+
+loading();
+
 // ----------------------logic event----------------------
 
-function addNewTransaction(type){
+async function loading(){
+    await dataTableShow();
+}
+
+document.getElementById('btn_addNewTransaction').addEventListener("click", () => {addNewTransaction('new')});
+
+async function addNewTransaction(type){
     let container = document.querySelector(".container");
+
+    // lấy danh sách danh mục
+    let categoryList = await getCategoryNameList();
+
+    // lấy danh sách ví tiền
+    let walletList = await getWalletNameList();
+
+    let categories = [];
+
+    for(let i=0; i<=categoryList.length-1; i++){
+        if(categoryList[i].parentId == null){
+            // không có parentId thì để cateogry đó làm cha
+            let parent = {
+                "id": categoryList[i].id,
+                "parentName": categoryList[i].categoryName,
+                "child": []
+            };
+            categories.push(parent);
+        }
+        else{
+            // có parentId thì tìm xem là con của cha nào
+            categories.forEach(item => {
+                if(item.id == categoryList[i].parentId){
+                    let child = {
+                        "childId": categoryList[i].id,
+                        "childName": categoryList[i].categoryName
+                    }
+                    item.child.push(child);
+                }
+            });
+        }
+    }
+
+    let selectCategoryTransactions = `<option value="">Chọn Danh Mục</option>`;
+    let selectWalletTransactions = `<option value="">Chọn Ví Tiền</option>`
+
+    categories.forEach(parent => {
+        selectCategoryTransactions += `
+            <optgroup label="${parent.parentName}">
+        `;
+
+        parent.child.forEach(child => {
+        selectCategoryTransactions += `
+            <option 
+                value="${child.childName}"
+                data-id="${child.childId}">
+                ${child.childName}
+            </option>
+        `;
+        });
+
+        selectCategoryTransactions += `</optgroup>`;
+    });
+
+    walletList.forEach(wallet => {
+        selectWalletTransactions += `
+            <option value="${wallet.walletName}" data-id = ${wallet.id}>${wallet.walletName}</optgroup>`;
+    });
+
+    
 
     if(!checkExistsForm('addNewTransaction')){
         let container = document.querySelector(".container");
@@ -26,24 +97,7 @@ function addNewTransaction(type){
 
                     <div class="dialog-content">
 
-                        <!-- loại giao dịch -->
-                        <div class="transaction-type">
-                            <button
-                                class="transaction-tab expense active"
-                                id="expenseTab"
-                                type="button"
-                            >
-                                Chi Tiêu
-                            </button>
-
-                            <button
-                                class="transaction-tab income"
-                                id="incomeTab"
-                                type="button"
-                            >
-                                Thu Nhập
-                            </button>
-                        </div>
+                        
 
                         <!-- tên giao dịch -->
                         <div class="form-group">
@@ -52,6 +106,7 @@ function addNewTransaction(type){
                                 <input
                                     type="text"
                                     class="input"
+                                    id="transactionName_input"
                                     placeholder="VD: Mua sắm cuối tuần"
                                 />
                             </div>
@@ -60,14 +115,14 @@ function addNewTransaction(type){
                         <!-- số tiền giao dịch -->
                         <div class="form-group">
                         <label for="transactionAmount">Số tiền Ngân Sách</label>
-                        <div class="input-wrapper amount-wrapper">
+                        <div class="input-wrapper amount-wrapper has-icon-right">
                             <input
                                 type="text"
-                                id="transactionAmount"
+                                id="transactionAmount_input"
                                 class="input"
                                 placeholder="0"
                             />
-                            <span class="currency">VND</span>
+                            <span class="input-icon right currency">VND</span>
                         </div>
                     </div>
 
@@ -80,7 +135,7 @@ function addNewTransaction(type){
                                     <input
                                         type="date"
                                         class="input"
-                                        id="transactionDate"
+                                        id="transactionDate_input"
                                     />
                                 </div>
                             </div>
@@ -88,11 +143,11 @@ function addNewTransaction(type){
                             <div class="form-group half">
                                 <label>Thời điểm</label>
                                 <div class="input-wrapper">
-                                    <select class="select">
-                                        <option>Sáng</option>
-                                        <option>Trưa</option>
-                                        <option>Chiều</option>
-                                        <option>Tối</option>
+                                    <select class="select" id="timeSelect_input">
+                                        <option value="1">Sáng</option>
+                                        <option value="2">Trưa</option>
+                                        <option value="3">Chiều</option>
+                                        <option value="4">Tối</option>
                                     </select>
                                 </div>
                             </div>
@@ -101,10 +156,20 @@ function addNewTransaction(type){
 
                         <!-- ví -->
                         <div class="form-group">
+                            <label>Danh Mục</label>
+                            <div class="input-wrapper">
+                                <select class="select" id="categorySelect_input">
+                                    ${selectCategoryTransactions}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- ví -->
+                        <div class="form-group">
                             <label>Ví / Tài khoản</label>
                             <div class="input-wrapper">
-                                <select class="select">
-                                    <option>Chọn ví tiền</option>
+                                <select class="select" id="walletSelect_input>
+                                    ${selectWalletTransactions}
                                 </select>
                             </div>
                         </div>
@@ -116,6 +181,7 @@ function addNewTransaction(type){
                                 <input
                                     type="text"
                                     class="input"
+                                    id="transactionPlace_input"
                                     placeholder="VD: Siêu thị, Quán cafe..."
                                 />
                             </div>
@@ -127,6 +193,7 @@ function addNewTransaction(type){
                             <div class="input-wrapper">
                                 <textarea
                                     class="text-area"
+                                    id="transactionNote_input"
                                     placeholder="Nhập ghi chú..."
                                 ></textarea>
                             </div>
@@ -137,7 +204,7 @@ function addNewTransaction(type){
                     <div class="dialog-footer">
                         <button class="btn btn-cancel" id="cancelForm" type="button">Hủy</button>
 
-                        <button class="btn btn-save" id="saveTransaction" type="button">Tạo Giao Dịch</button>
+                        <button class="btn btn-save" id="saveTransaction" type="button">Thêm Giao Dịch</button>
                     </div>
 
                 </div>
@@ -154,7 +221,8 @@ function addNewTransaction(type){
             closeForm('addNewTransaction');
         });
 
-        document.getElementById('saveTransaction').addEventListener('click', () => {
+        document.getElementById('saveTransaction').addEventListener('click', async () => {
+            await getTransactionData();
             closeForm('addNewTransaction');
         });
 
@@ -164,15 +232,19 @@ function addNewTransaction(type){
         const expenseTab = document.getElementById("expenseTab");
         const incomeTab = document.getElementById("incomeTab");
 
-        expenseTab.addEventListener("click", () => {
-            expenseTab.classList.add("active");
-            incomeTab.classList.remove("active");
-        });
+        // document.getElementById().addEventListener("load", () => {
+            
+        // });
 
-        incomeTab.addEventListener("click", () => {
-            incomeTab.classList.add("active");
-            expenseTab.classList.remove("active");
-        });
+        // expenseTab.addEventListener("click", () => {
+        //     expenseTab.classList.add("active");
+        //     incomeTab.classList.remove("active");
+        // });
+
+        // incomeTab.addEventListener("click", () => {
+        //     incomeTab.classList.add("active");
+        //     expenseTab.classList.remove("active");
+        // });
     }
     else{
         showForm('addNewTransaction');
@@ -244,6 +316,178 @@ function softdelete(id){
     document.getElementById(id).style.display = "none";
 }
 
+async function dataTableShow(){
+    // lấy dữ liệu từ backend
+    let dataResponse = await getAllDataTransaction();
+
+    renderTransactionTable(dataResponse);
+
+
+}
+
+function renderTransactionTable(data) {
+    const grouped = {};
+    let parent = document.getElementById("dataTable");
+
+    // group theo giao dịch cha
+    data.forEach(item => {
+        if (!grouped[item.transactionCode]) {
+            grouped[item.transactionCode] = {
+                parent: {
+                    transactionCode: item.transactionCode,
+                    transactionTotalAmount: item.transactionTotalAmount,
+                    transactionDate: item.transactionDate,
+                    transactionTime: item.transactionTime
+                },
+                children: []
+            };
+        }
+
+        grouped[item.transactionCode].children.push({
+            transactionDetailCode: item.transactionDetailCode,
+            transactionName: item.transactionName,
+            transactionAmount: item.transactionAmount,
+            categoryName: item.categoryName
+        });
+    });
+
+    let html = "";
+    let parentIndex = 1;
+
+    Object.values(grouped).forEach(group => {
+        const activeId = `active${parentIndex}`;
+
+        html += `
+        <div class="tb-row">
+            <div class="tb-row setting parent" data-code="${group.parent.transactionCode}">
+                <div class="wrap-function">
+                    <div class="icon detail" data-target="${activeId}">
+                        <i class="fi fi-rs-angle-double-small-right"></i>
+                    </div>
+                    <input type="checkbox" class="ckb" name="ckb">
+                </div>
+                <div class="stt">${parentIndex}</div>
+                <div class="code">${group.parent.transactionCode}</div>
+                <div class="amount">${formatMoney(group.parent.transactionTotalAmount)}</div>
+                <div class="date">${formatDate(group.parent.transactionDate)}</div>
+                <div class="time">${formatTime(group.parent.transactionTime)}</div>
+                <div class="actions">
+                    <div class="icon edit" title="Chỉnh sửa" style="opacity: 0">
+                        <i class="fi fi-rs-pencil"></i>
+                    </div>
+                    <div class="icon archive" title="Lưu trữ giao dịch">
+                        <i class="fi fi-rs-folder-download"></i>
+                    </div>
+                    <div class="icon cancel" title="Hủy giao dịch">
+                        <i class="fi fi-rs-rectangle-xmark"></i>
+                    </div>
+                    <div class="icon delete" title="Xóa giao dịch">
+                        <i class="fi fi-rs-trash"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="child inactive" id="${activeId}">
+                <div class="tb-row setting child-head">
+                    <div class="wrap-function">
+                        <div class="icon detail disable">
+                            <i class="fi fi-rs-angle-double-small-right"></i>
+                        </div>
+                        <input type="checkbox" class="ckb" name="ckb" style="opacity: 0;">
+                    </div>
+                    <div class="stt">STT</div>
+                    <div class="code">Mã Giao Dịch Con</div>
+                    <div class="name">Tên Giao Dịch Con</div>
+                    <div class="amount">Số Tiền</div>
+                    <div class="category">Danh Mục</div>
+                    <div class="actions">Hành Động</div>
+                </div>
+        `;
+
+        group.children.forEach((child, index) => {
+            const deleteId = `delete${parentIndex}_${index + 1}`;
+
+            html += `
+                <div class="tb-row setting child-content" 
+                     id="${deleteId}" 
+                     data-code="${child.transactionDetailCode}">
+                    <div class="wrap-function">
+                        <div class="icon detail disable">
+                            <i class="fi fi-rs-angle-double-small-right"></i>
+                        </div>
+                        <input type="checkbox" class="ckb" name="ckb">
+                    </div>
+                    <div class="stt">${index + 1}</div>
+                    <div class="code">${child.transactionDetailCode}</div>
+                    <div class="name">${child.transactionName}</div>
+                    <div class="amount expense">
+                        ${formatMoney(child.transactionAmount)}
+                    </div>
+                    <div class="category">
+                        <div class="sub-category">${child.categoryName}</div>
+                    </div>
+                    <div class="actions">
+                        <div class="icon edit" title="Chỉnh sửa">
+                            <i class="fi fi-rs-pencil"></i>
+                        </div>
+                        <div class="icon archive" title="Lưu trữ giao dịch">
+                            <i class="fi fi-rs-folder-download"></i>
+                        </div>
+                        <div class="icon cancel" title="Hủy giao dịch">
+                            <i class="fi fi-rs-rectangle-xmark"></i>
+                        </div>
+                        <div class="icon delete" 
+                             title="Xóa giao dịch"
+                             onclick="softdelete('${deleteId}')">
+                            <i class="fi fi-rs-trash"></i>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+            </div>
+        </div>
+        `;
+
+        parentIndex++;
+    });
+
+    parent.innerHTML += html;
+
+    document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".icon.detail");
+
+        if (!btn) return;
+
+        const targetId = btn.dataset.target;
+        active(targetId);
+    });
+}
+
+// format tiền
+function formatMoney(amount) {
+    return Number(amount).toLocaleString("vi-VN");
+}
+
+// format ngày
+function formatDate(date) {
+    return new Date(date).toLocaleDateString("vi-VN");
+}
+
+// format thời gian
+function formatTime(time) {
+    const timeMap = {
+        1: "Buổi Sáng",
+        2: "Buổi Trưa",
+        3: "Buổi Chiều",
+        4: "Buổi Tối"
+    };
+
+    return timeMap[time] || "";
+}
+
 // -------------------------fetch---------------------------
 
 function getTransactionData(){
@@ -251,12 +495,14 @@ function getTransactionData(){
     let dialog = document.getElementById("addNewTransaction");
 
     let transaction = {
-        name: dialog.querySelector("#transactionName"),
-        amount: dialog.querySelector("#transactionAmount"),
-        time: dialog.querySelector("#transactionTime"),
-        date: dialog.querySelector("#transactionDate"),
-        place: dialog.querySelector("#transactionPlace"),
-        description: dialog.querySelector("#textArea")
+        name: dialog.querySelector("#transactionName_input"),
+        amount: dialog.querySelector("#transactionAmount_input"),
+        time: dialog.querySelector("#timeSelect_input"),
+        category: dialog.querySelector("#categorySelect_input"),
+        wallet: dialog.querySelector("#walletSelect_input"),
+        date: dialog.querySelector("#transactionDate_input"),
+        place: dialog.querySelector("#transactionPlace_input"),
+        description: dialog.querySelector("#transactionNote_input")
     };
 
     // reset error
@@ -312,23 +558,81 @@ function getTransactionData(){
 }
 
 async function saveTransaction(){
+    try{
+        let transaction = getTransactionData();
 
-    let transaction = getTransactionData();
+        if(!transaction) return;
 
-    if(!transaction) return;
+        let transactionPost = await fetch(`${api.API_URL}/api/transaction/add-new`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify(transaction)
+        });
 
-    let transactionPost = await fetch(`http://localhost:8050/api/transaction/add-new`, {
-            method: "PUT",
-            headers: {
+        if (!transactionPost.ok) {
+                throw new Error("Không xác thực được người dùng");
+        }
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+
+async function getAllDataTransaction(){
+    try{
+        let dataResponse = await fetch(`${api.API_URL}/api/transaction/get-transaction-by-page?litmit=100&page=1`, {
+            method: "GET",
+            headers:{
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(transaction)
-    });
+            credentials: "include",
+        });
 
-    if (!transactionPost.ok) {
-            throw new Error("Không xác thực được người dùng");
+        let data = await dataResponse.json();
+        return data.data;
     }
+    catch(error){
+        console.error(error);
+    }
+}
 
-    closeAddNewTransactionDialog();
-    
+async function getCategoryNameList(){
+    try{
+        let dataResponse = await fetch(`${api.API_URL}/api/category/name-list`, {
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+        });
+
+        let data = await dataResponse.json();
+        console.log(data);
+        return data.data;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+
+async function getWalletNameList(){
+    try{
+        let dataResponse = await fetch(`${api.API_URL}/api/wallet/name-list`, {
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+        });
+
+        let data = await dataResponse.json();
+        console.log(data);
+        return data.data;
+    }
+    catch(error){
+        console.error(error);
+    }
 }
