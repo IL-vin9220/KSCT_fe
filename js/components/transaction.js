@@ -168,7 +168,7 @@ async function addNewTransaction(type){
                         <div class="form-group">
                             <label>Ví / Tài khoản</label>
                             <div class="input-wrapper">
-                                <select class="select" id="walletSelect_input>
+                                <select class="select" id="walletSelect_input">
                                     ${selectWalletTransactions}
                                 </select>
                             </div>
@@ -222,7 +222,7 @@ async function addNewTransaction(type){
         });
 
         document.getElementById('saveTransaction').addEventListener('click', async () => {
-            await getTransactionData();
+            await saveTransaction();
             closeForm('addNewTransaction');
         });
 
@@ -506,9 +506,9 @@ function getTransactionData(){
     };
 
     // reset error
-    Object.values(transaction).forEach(input => {
-        input.classList.remove("error");
-    });
+    // Object.values(transaction).forEach(input => {
+    //     input.classList.remove("error");
+    // });
 
     // regex
     let regexAmount = /^[0-9]+$/;
@@ -546,20 +546,26 @@ function getTransactionData(){
     //     return null;
     // }
 
-    return {
-        code: `T_${Math.random().toString(36).substring(2, 8)}`,
-        amount: Number(transaction.amount.value.trim()),
-        time: transaction.time.value.trim(),
+    let result = {
+        name: transaction.name.value.trim(),
+        amount: transaction.amount.value.trim(),
+        time: transaction.time.options[transaction.time.selectedIndex].value,
+        categoryId: transaction.category.options[transaction.category.selectedIndex].dataset.id,
+        walletId: transaction.wallet.options[transaction.wallet.selectedIndex].dataset.id,
         date: transaction.date.value.trim(),
-        place: transaction.place.value.trim(),
-        description: transaction.description.value.trim(),
-        userID: JSON.parse(localStorage.user).id
+        placeName: transaction.place.value.trim(),
+        placeLocation: "",
+        placeAddress: "",
+        note: transaction.description.value.trim()
     };
+
+    return result;
 }
 
 async function saveTransaction(){
     try{
         let transaction = getTransactionData();
+        console.log(JSON.stringify(transaction));
 
         if(!transaction) return;
 
@@ -575,6 +581,7 @@ async function saveTransaction(){
         if (!transactionPost.ok) {
                 throw new Error("Không xác thực được người dùng");
         }
+        console.log("thêm mới thành công");
     }
     catch(error){
         console.error(error);
@@ -583,7 +590,7 @@ async function saveTransaction(){
 
 async function getAllDataTransaction(){
     try{
-        let dataResponse = await fetch(`${api.API_URL}/api/transaction/get-transaction-by-page?litmit=100&page=1`, {
+        let dataResponse = await fetch(`${api.API_URL}/api/transaction/get-transaction-by-page?limit=100&page=1`, {
             method: "GET",
             headers:{
                 "Content-Type": "application/json"
@@ -592,6 +599,7 @@ async function getAllDataTransaction(){
         });
 
         let data = await dataResponse.json();
+        console.log(data.data);
         return data.data;
     }
     catch(error){
